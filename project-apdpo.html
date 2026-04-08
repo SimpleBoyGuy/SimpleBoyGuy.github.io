@@ -14,345 +14,348 @@
     href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css?v=20260408f">
+  <link rel="stylesheet" href="styles.css?v=20260408g">
 </head>
-<body>
+<body class="project-page">
   <div class="page-shell">
-    <header class="subpage-hero">
-      <p class="eyebrow">Project</p>
-      <h1>APDPO for FJSP</h1>
-      <p class="subtitle">
-        Reinforcement Learning for the Flexible Job Shop Scheduling Problem
-      </p>
-      <p class="intro">
-        This project studies how reinforcement learning can be used to solve the Flexible Job Shop Scheduling
-        Problem (FJSP), with the goal of producing scheduling policies that are both high-quality and practical
-        for complex manufacturing decision-making.
-      </p>
-      <div class="hero-actions">
-        <a href="index.html">Back to Homepage</a>
-        <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
-        <a href="https://doi.org/10.1109/CDC57313.2025.11312736" target="_blank" rel="noreferrer">DOI</a>
+    <div class="project-layout">
+      <aside class="project-sidebar">
+        <div class="sidebar-block">
+          <p class="eyebrow">Quick Links</p>
+          <nav class="sidebar-links">
+            <a href="index.html">Homepage</a>
+            <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
+            <a href="https://doi.org/10.1109/CDC57313.2025.11312736" target="_blank" rel="noreferrer">DOI Page</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="eyebrow">On This Page</p>
+          <nav class="sidebar-links sidebar-links-secondary">
+            <a href="#overview">Overview</a>
+            <a href="#formulation">MDP Formulation</a>
+            <a href="#apdpo">APDPO</a>
+            <a href="#pipeline">Pipeline</a>
+            <a href="#results">Results</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-note">
+          <p class="sidebar-note-title">CDC 2025</p>
+          <p>Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</p>
+        </div>
+      </aside>
+
+      <div class="project-main">
+        <header class="subpage-hero">
+          <p class="eyebrow">Project</p>
+          <h1>APDPO for FJSP</h1>
+          <p class="subtitle">
+            Reinforcement Learning for the Flexible Job Shop Scheduling Problem
+          </p>
+          <p class="intro">
+            This project studies how reinforcement learning can be used to solve the Flexible Job Shop Scheduling
+            Problem (FJSP), with the goal of producing scheduling policies that are both high-quality and practical
+            for complex manufacturing decision-making.
+          </p>
+        </header>
+
+        <main class="content-flow">
+          <section class="content-section" id="overview">
+            <h2>Project Overview</h2>
+            <p>
+              The Flexible Job Shop Scheduling Problem extends classical job shop scheduling by allowing each
+              operation to be processed on multiple candidate machines. This flexibility makes the problem much more
+              realistic for practical production systems, but also significantly increases the complexity of making
+              high-quality scheduling decisions.
+            </p>
+            <p>
+              In this project, I explore reinforcement learning as a way to learn scheduling policies directly from
+              problem instances and system feedback, instead of relying only on handcrafted dispatching rules or
+              expensive iterative optimization procedures.
+            </p>
+            <p>
+              This page is based directly on my CDC 2025 paper
+              <strong>Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</strong>.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Problem Description</h2>
+            <p>
+              In FJSP, each job consists of an ordered sequence of operations with precedence constraints. Every
+              operation can be processed by one machine chosen from its eligible machine set, and different machines
+              may require different processing times.
+            </p>
+            <p>
+              A solver therefore needs to decide both <strong>which operation</strong> should be processed next and
+              <strong>which machine</strong> should handle it. Because sequencing and machine assignment are tightly
+              coupled, the search space grows rapidly as the system size increases.
+            </p>
+            <p>
+              The optimization objective in the paper is to minimize the <strong>makespan</strong>, namely the final
+              completion time of the schedule.
+            </p>
+          </section>
+
+          <section class="content-section" id="formulation">
+            <h2>MDP Formulation</h2>
+            <p>
+              The paper formulates FJSP as a finite-horizon Markov Decision Process. Each stage corresponds to a
+              decision point where at least one feasible machine-operation assignment is available.
+            </p>
+            <ul class="plain-list">
+              <li><strong>State:</strong> job progress matrix, machine availability vector, active work set, and system clock</li>
+              <li><strong>Action:</strong> assigning one machine to one feasible operation</li>
+              <li><strong>Dynamics:</strong> update job status, machine status, work set, and advance the system clock when necessary</li>
+              <li><strong>Reward:</strong> negative elapsed time between consecutive decision stages</li>
+            </ul>
+            <p>
+              Under this design, the total return over a trajectory becomes the negative makespan, so maximizing
+              return is equivalent to minimizing the scheduling objective.
+            </p>
+          </section>
+
+          <section class="content-section" id="pipeline">
+            <h2>Method Flow</h2>
+            <div class="flow-diagram">
+              <div class="flow-card">
+                <span class="flow-step">01</span>
+                <h3>Model the FJSP State</h3>
+                <p>Encode job progress, machine availability, active work, and system time into the RL state.</p>
+              </div>
+              <div class="flow-card">
+                <span class="flow-step">02</span>
+                <h3>Construct Action Priorities</h3>
+                <p>Assign a priority value to each candidate machine-operation action.</p>
+              </div>
+              <div class="flow-card">
+                <span class="flow-step">03</span>
+                <h3>Roll Out Trajectories</h3>
+                <p>Sample feasible actions according to normalized priorities and observe scheduling returns.</p>
+              </div>
+              <div class="flow-card">
+                <span class="flow-step">04</span>
+                <h3>Update Without Gradients</h3>
+                <p>Directly reinforce effective actions and reduce competing priorities to improve the policy.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>Why Reinforcement Learning</h2>
+            <p>
+              Traditional approaches to FJSP often involve a trade-off. Exact optimization methods can provide strong
+              solutions but may be computationally expensive, while heuristic and metaheuristic methods can be faster
+              but may sacrifice consistency or optimality.
+            </p>
+            <p>
+              Reinforcement learning offers a different perspective by learning a sequential decision policy directly
+              from scheduling states. For me, the appeal is not only better performance, but also the possibility of
+              building scheduling solvers that are adaptive, efficient, and practically deployable.
+            </p>
+          </section>
+
+          <section class="content-section" id="apdpo">
+            <h2>APDPO</h2>
+            <p>
+              My CDC 2025 work introduces <strong>Action-Priority Driven Policy Optimization (APDPO)</strong>, a
+              reinforcement learning method designed specifically for FJSP. The method is motivated by three main
+              goals: improving solution quality, increasing interpretability through a more intuitive policy
+              representation, and reducing computational cost through direct policy updates.
+            </p>
+            <ul class="plain-list">
+              <li>Action-priority policy representation for more transparent scheduling decisions</li>
+              <li>Direct, gradient-free policy updates for improved computational efficiency</li>
+              <li>A reinforcement learning framework tailored to the structural characteristics of FJSP</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>Key Contributions</h2>
+            <ul class="plain-list">
+              <li><strong>A new policy representation:</strong> APDPO represents scheduling decisions with an action-priority vector instead of relying purely on black-box policy parameterization.</li>
+              <li><strong>A direct update rule:</strong> the algorithm updates action priorities in a gradient-free manner, making the policy adaptation process easier to interpret.</li>
+              <li><strong>Theoretical support:</strong> the paper establishes policy-improvement results under explicit conditions, strengthening the method beyond pure empirical performance.</li>
+              <li><strong>Strong benchmark results:</strong> APDPO improves over existing RL baselines and moves closer to OR-Tools on standard FJSP benchmarks.</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>Policy Representation</h2>
+            <p>
+              Instead of representing the policy only through a neural network, APDPO uses an
+              <strong>action-priority vector</strong>. Each entry corresponds to one possible action, and each value
+              indicates the priority of that action.
+            </p>
+            <p>
+              For a given state, the policy is obtained by normalizing the priority values over the feasible action
+              set. During training, this yields a stochastic policy; during inference, the deterministic policy simply
+              selects the feasible action with the highest priority.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Policy Update Mechanism</h2>
+            <p>
+              A central feature of APDPO is that the policy update is <strong>gradient-free</strong>. When a selected
+              action is associated with improvement, the algorithm directly increases its priority and proportionally
+              reduces the priorities of competing actions. This leads to an update rule that is simple, direct, and
+              easy to interpret.
+            </p>
+            <p>
+              The paper further proves policy-improvement results under explicit conditions. In other words, APDPO is
+              not only an empirically effective algorithm, but also a method supported by theoretical analysis.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Decision Example</h2>
+            <p>
+              A useful way to understand APDPO is to view each decision point as a competition among feasible
+              assignments. Suppose a current state allows three candidate actions:
+            </p>
+            <div class="decision-grid">
+              <div class="decision-card">
+                <p class="decision-label">Action A</p>
+                <p>Assign operation <strong>O1,2</strong> to machine <strong>M1</strong></p>
+                <p class="decision-score">Priority: 0.42</p>
+              </div>
+              <div class="decision-card">
+                <p class="decision-label">Action B</p>
+                <p>Assign operation <strong>O2,1</strong> to machine <strong>M3</strong></p>
+                <p class="decision-score">Priority: 0.31</p>
+              </div>
+              <div class="decision-card">
+                <p class="decision-label">Action C</p>
+                <p>Assign operation <strong>O3,2</strong> to machine <strong>M2</strong></p>
+                <p class="decision-score">Priority: 0.27</p>
+              </div>
+            </div>
+            <p>
+              Under APDPO, the policy distribution is obtained by normalizing these priorities over feasible actions.
+              If Action A leads to a better return, APDPO increases its priority and proportionally suppresses the
+              others, making future decisions more aligned with improved schedules.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Interpretation</h2>
+            <p>
+              One of the most interesting interpretations in the paper is that updating the action-priority vector can
+              be viewed as implicitly refining the problem instance itself. Since priorities are initialized from
+              processing-time information, changing priorities can be understood as modifying the effective structure
+              seen by the policy, so that a simple deterministic scheduler performs better on the refined instance.
+            </p>
+          </section>
+
+          <section class="content-section" id="results">
+            <h2>Experimental Results</h2>
+            <p>
+              The paper evaluates APDPO on the standard <strong>Brandimarte</strong> and <strong>Hurink</strong>
+              benchmark datasets for FJSP. According to the reported results, APDPO delivers stronger solution quality
+              than existing RL baselines and moves significantly closer to OR-Tools, while also showing lower
+              inference time.
+            </p>
+            <p>
+              For me, this is especially important because it suggests that reinforcement learning for scheduling can
+              be both academically strong and computationally practical.
+            </p>
+            <div class="highlight-grid">
+              <div class="highlight-card">
+                <p class="highlight-value">Stronger</p>
+                <p class="highlight-label">than reported RL baselines on the summarized benchmark groups</p>
+              </div>
+              <div class="highlight-card">
+                <p class="highlight-value">Closer</p>
+                <p class="highlight-label">to OR-Tools while keeping the RL decision-making perspective</p>
+              </div>
+              <div class="highlight-card">
+                <p class="highlight-value">Lower Cost</p>
+                <p class="highlight-label">in inference time than the compared RL methods in Table I</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="benchmark-table">
+                <thead>
+                  <tr>
+                    <th>Benchmark</th>
+                    <th>Best RL Baseline</th>
+                    <th>APDPO</th>
+                    <th>OR-Tools</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>mk</td>
+                    <td>184.40</td>
+                    <td><strong>178.10</strong></td>
+                    <td>173.90</td>
+                  </tr>
+                  <tr>
+                    <td>la (rdata)</td>
+                    <td>1030.83</td>
+                    <td><strong>961.53</strong></td>
+                    <td>933.53</td>
+                  </tr>
+                  <tr>
+                    <td>la (edata)</td>
+                    <td>1175.53</td>
+                    <td><strong>1059.05</strong></td>
+                    <td>1026.80</td>
+                  </tr>
+                  <tr>
+                    <td>la (vdata)</td>
+                    <td>944.85</td>
+                    <td><strong>926.45</strong></td>
+                    <td>920.40</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="benchmark-note">
+              Reported values are average makespan results summarized from Table I of the CDC 2025 paper.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Current Focus</h2>
+            <p>
+              The broader project aims to develop a reinforcement learning solver for scheduling problems that is not
+              only academically strong, but also meaningful for real-world applications. I am especially interested
+              in connecting rigorous algorithmic ideas with practical scheduling environments where decision quality,
+              efficiency, and scalability all matter.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Related Outputs</h2>
+            <ul class="plain-list">
+              <li><strong>CDC 2025 paper:</strong> Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</li>
+              <li><strong>DOI:</strong> 10.1109/CDC57313.2025.11312736</li>
+              <li><strong>Authors:</strong> <strong>Wenjun Zheng</strong>, Weilin Cai, Wei Qu, and Jianfeng Mao</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>Note</h2>
+            <p>
+              This page is a concise project-oriented summary based on the full CDC 2025 paper. I may later extend it
+              with figures, benchmark tables, implementation notes, and code links.
+            </p>
+            <p class="project-links">
+              <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
+              <a href="https://doi.org/10.1109/CDC57313.2025.11312736" target="_blank" rel="noreferrer">DOI Page</a>
+            </p>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <p>Last updated: April 2026</p>
+          <p><a href="index.html">Return to homepage</a></p>
+        </footer>
       </div>
-    </header>
-
-    <main class="content-flow">
-      <section class="content-section">
-        <h2>Project Overview</h2>
-        <p>
-          The Flexible Job Shop Scheduling Problem extends classical job shop scheduling by allowing each
-          operation to be processed on multiple candidate machines. This flexibility makes the problem much more
-          realistic for practical production systems, but also significantly increases the complexity of making
-          high-quality scheduling decisions.
-        </p>
-        <p>
-          In this project, I explore reinforcement learning as a way to learn scheduling policies directly from
-          problem instances and system feedback, instead of relying only on handcrafted dispatching rules or
-          expensive iterative optimization procedures.
-        </p>
-        <p>
-          This page is based directly on my CDC 2025 paper
-          <strong>Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</strong>.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Problem Description</h2>
-        <p>
-          In FJSP, each job consists of an ordered sequence of operations with precedence constraints. Every
-          operation can be processed by one machine chosen from its eligible machine set, and different machines
-          may require different processing times.
-        </p>
-        <p>
-          A solver therefore needs to decide both <strong>which operation</strong> should be processed next and
-          <strong>which machine</strong> should handle it. Because sequencing and machine assignment are tightly
-          coupled, the search space grows rapidly as the system size increases.
-        </p>
-        <p>
-          The optimization objective in the paper is to minimize the <strong>makespan</strong>, namely the final
-          completion time of the schedule.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>MDP Formulation</h2>
-        <p>
-          The paper formulates FJSP as a finite-horizon Markov Decision Process. Each stage corresponds to a
-          decision point where at least one feasible machine-operation assignment is available.
-        </p>
-        <ul class="plain-list">
-          <li><strong>State:</strong> job progress matrix, machine availability vector, active work set, and system clock</li>
-          <li><strong>Action:</strong> assigning one machine to one feasible operation</li>
-          <li><strong>Dynamics:</strong> update job status, machine status, work set, and advance the system clock when necessary</li>
-          <li><strong>Reward:</strong> negative elapsed time between consecutive decision stages</li>
-        </ul>
-        <p>
-          Under this design, the total return over a trajectory becomes the negative makespan, so maximizing
-          return is equivalent to minimizing the scheduling objective.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Method Flow</h2>
-        <div class="flow-diagram">
-          <div class="flow-card">
-            <span class="flow-step">01</span>
-            <h3>Model the FJSP State</h3>
-            <p>Encode job progress, machine availability, active work, and system time into the RL state.</p>
-          </div>
-          <div class="flow-arrow" aria-hidden="true">→</div>
-          <div class="flow-card">
-            <span class="flow-step">02</span>
-            <h3>Construct Action Priorities</h3>
-            <p>Assign a priority value to each candidate machine-operation action.</p>
-          </div>
-          <div class="flow-arrow" aria-hidden="true">→</div>
-          <div class="flow-card">
-            <span class="flow-step">03</span>
-            <h3>Roll Out Trajectories</h3>
-            <p>Sample feasible actions according to normalized priorities and observe scheduling returns.</p>
-          </div>
-          <div class="flow-arrow" aria-hidden="true">→</div>
-          <div class="flow-card">
-            <span class="flow-step">04</span>
-            <h3>Update Without Gradients</h3>
-            <p>Directly reinforce effective actions and reduce competing priorities to improve the policy.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Why Reinforcement Learning</h2>
-        <p>
-          Traditional approaches to FJSP often involve a trade-off. Exact optimization methods can provide strong
-          solutions but may be computationally expensive, while heuristic and metaheuristic methods can be faster
-          but may sacrifice consistency or optimality.
-        </p>
-        <p>
-          Reinforcement learning offers a different perspective by learning a sequential decision policy directly
-          from scheduling states. For me, the appeal is not only better performance, but also the possibility of
-          building scheduling solvers that are adaptive, efficient, and practically deployable.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>APDPO</h2>
-        <p>
-          My CDC 2025 work introduces <strong>Action-Priority Driven Policy Optimization (APDPO)</strong>, a
-          reinforcement learning method designed specifically for FJSP. The method is motivated by three main
-          goals: improving solution quality, increasing interpretability through a more intuitive policy
-          representation, and reducing computational cost through direct policy updates.
-        </p>
-        <ul class="plain-list">
-          <li>Action-priority policy representation for more transparent scheduling decisions</li>
-          <li>Direct, gradient-free policy updates for improved computational efficiency</li>
-          <li>A reinforcement learning framework tailored to the structural characteristics of FJSP</li>
-        </ul>
-      </section>
-
-      <section class="content-section">
-        <h2>Key Contributions</h2>
-        <ul class="plain-list">
-          <li>
-            <strong>A new policy representation:</strong> APDPO represents scheduling decisions with an
-            action-priority vector instead of relying purely on black-box policy parameterization.
-          </li>
-          <li>
-            <strong>A direct update rule:</strong> the algorithm updates action priorities in a gradient-free
-            manner, making the policy adaptation process easier to interpret.
-          </li>
-          <li>
-            <strong>Theoretical support:</strong> the paper establishes policy-improvement results under explicit
-            conditions, strengthening the method beyond pure empirical performance.
-          </li>
-          <li>
-            <strong>Strong benchmark results:</strong> APDPO improves over existing RL baselines and moves closer
-            to OR-Tools on standard FJSP benchmarks.
-          </li>
-        </ul>
-      </section>
-
-      <section class="content-section">
-        <h2>Policy Representation</h2>
-        <p>
-          Instead of representing the policy only through a neural network, APDPO uses an
-          <strong>action-priority vector</strong>. Each entry corresponds to one possible action, and each value
-          indicates the priority of that action.
-        </p>
-        <p>
-          For a given state, the policy is obtained by normalizing the priority values over the feasible action
-          set. During training, this yields a stochastic policy; during inference, the deterministic policy simply
-          selects the feasible action with the highest priority.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Policy Update Mechanism</h2>
-        <p>
-          A central feature of APDPO is that the policy update is <strong>gradient-free</strong>. When a selected
-          action is associated with improvement, the algorithm directly increases its priority and proportionally
-          reduces the priorities of competing actions. This leads to an update rule that is simple, direct, and
-          easy to interpret.
-        </p>
-        <p>
-          The paper further proves policy-improvement results under explicit conditions. In other words, APDPO is
-          not only an empirically effective algorithm, but also a method supported by theoretical analysis.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Algorithm Pipeline</h2>
-        <ol class="pipeline-list">
-          <li>
-            <strong>Initialize priorities:</strong> build an action-priority vector whose entries correspond to
-            all possible machine-operation assignments.
-          </li>
-          <li>
-            <strong>Interact with the environment:</strong> sample feasible actions according to normalized action
-            priorities and roll out trajectories on FJSP instances.
-          </li>
-          <li>
-            <strong>Evaluate improvement:</strong> compare trajectory returns and state values to determine whether
-            a selected action should be reinforced.
-          </li>
-          <li>
-            <strong>Update directly:</strong> increase the selected action priority and proportionally decrease the
-            others, yielding a gradient-free policy update.
-          </li>
-        </ol>
-      </section>
-
-      <section class="content-section">
-        <h2>Interpretation</h2>
-        <p>
-          One of the most interesting interpretations in the paper is that updating the action-priority vector can
-          be viewed as implicitly refining the problem instance itself. Since priorities are initialized from
-          processing-time information, changing priorities can be understood as modifying the effective structure
-          seen by the policy, so that a simple deterministic scheduler performs better on the refined instance.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Decision Example</h2>
-        <p>
-          A useful way to understand APDPO is to view each decision point as a competition among feasible
-          assignments. Suppose a current state allows three candidate actions:
-        </p>
-        <div class="decision-grid">
-          <div class="decision-card">
-            <p class="decision-label">Action A</p>
-            <p>Assign operation <strong>O1,2</strong> to machine <strong>M1</strong></p>
-            <p class="decision-score">Priority: 0.42</p>
-          </div>
-          <div class="decision-card">
-            <p class="decision-label">Action B</p>
-            <p>Assign operation <strong>O2,1</strong> to machine <strong>M3</strong></p>
-            <p class="decision-score">Priority: 0.31</p>
-          </div>
-          <div class="decision-card">
-            <p class="decision-label">Action C</p>
-            <p>Assign operation <strong>O3,2</strong> to machine <strong>M2</strong></p>
-            <p class="decision-score">Priority: 0.27</p>
-          </div>
-        </div>
-        <p>
-          Under APDPO, the policy distribution is obtained by normalizing these priorities over feasible actions.
-          If Action A leads to a better return, APDPO increases its priority and proportionally suppresses the
-          others, making future decisions more aligned with improved schedules.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Experimental Results</h2>
-        <p>
-          The paper evaluates APDPO on the standard <strong>Brandimarte</strong> and <strong>Hurink</strong>
-          benchmark datasets for FJSP. According to the reported results, APDPO delivers stronger solution quality
-          than existing RL baselines and moves significantly closer to OR-Tools, while also showing lower
-          inference time.
-        </p>
-        <p>
-          For me, this is especially important because it suggests that reinforcement learning for scheduling can
-          be both academically strong and computationally practical.
-        </p>
-        <div class="table-wrap">
-          <table class="benchmark-table">
-            <thead>
-              <tr>
-                <th>Benchmark</th>
-                <th>Best RL Baseline</th>
-                <th>APDPO</th>
-                <th>OR-Tools</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>mk</td>
-                <td>184.40</td>
-                <td><strong>178.10</strong></td>
-                <td>173.90</td>
-              </tr>
-              <tr>
-                <td>la (rdata)</td>
-                <td>1030.83</td>
-                <td><strong>961.53</strong></td>
-                <td>933.53</td>
-              </tr>
-              <tr>
-                <td>la (edata)</td>
-                <td>1175.53</td>
-                <td><strong>1059.05</strong></td>
-                <td>1026.80</td>
-              </tr>
-              <tr>
-                <td>la (vdata)</td>
-                <td>944.85</td>
-                <td><strong>926.45</strong></td>
-                <td>920.40</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="benchmark-note">
-          Reported values are average makespan results summarized from Table I of the CDC 2025 paper.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Current Focus</h2>
-        <p>
-          The broader project aims to develop a reinforcement learning solver for scheduling problems that is not
-          only academically strong, but also meaningful for real-world applications. I am especially interested
-          in connecting rigorous algorithmic ideas with practical scheduling environments where decision quality,
-          efficiency, and scalability all matter.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Related Outputs</h2>
-        <ul class="plain-list">
-          <li><strong>CDC 2025 paper:</strong> Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</li>
-          <li><strong>DOI:</strong> 10.1109/CDC57313.2025.11312736</li>
-          <li><strong>Authors:</strong> <strong>Wenjun Zheng</strong>, Weilin Cai, Wei Qu, and Jianfeng Mao</li>
-        </ul>
-      </section>
-
-      <section class="content-section">
-        <h2>Note</h2>
-        <p>
-          This page is a concise project-oriented summary based on the full CDC 2025 paper. I may later extend it
-          with figures, benchmark tables, implementation notes, and code links.
-        </p>
-        <p class="project-links">
-          <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
-          <a href="https://doi.org/10.1109/CDC57313.2025.11312736" target="_blank" rel="noreferrer">DOI Page</a>
-        </p>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>Last updated: April 2026</p>
-      <p><a href="index.html">Return to homepage</a></p>
-    </footer>
+    </div>
   </div>
 </body>
 </html>

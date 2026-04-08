@@ -41,6 +41,10 @@ a {
   padding: 48px 0 56px;
 }
 
+.project-page .page-shell {
+  width: min(1180px, calc(100% - 40px));
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -194,6 +198,76 @@ main {
   border-bottom: 1px solid var(--line);
 }
 
+.project-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.project-sidebar {
+  position: sticky;
+  top: 24px;
+}
+
+.sidebar-block + .sidebar-block,
+.sidebar-note {
+  margin-top: 18px;
+}
+
+.sidebar-links {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar-links a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(62, 73, 61, 0.1);
+  background: rgba(255, 252, 246, 0.72);
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sidebar-links a:hover {
+  background: rgba(255, 250, 241, 0.92);
+}
+
+.sidebar-links-secondary a {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.sidebar-note {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(62, 73, 61, 0.1);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(245, 239, 230, 0.88));
+}
+
+.sidebar-note p {
+  margin: 0;
+}
+
+.sidebar-note p + p {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.sidebar-note-title {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.project-main {
+  min-width: 0;
+}
+
 .content-section {
   padding: 28px 0;
   border-bottom: 1px solid var(--line);
@@ -321,6 +395,35 @@ main {
   font-weight: 700;
 }
 
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0 20px;
+}
+
+.highlight-card {
+  padding: 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(62, 73, 61, 0.1);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(245, 239, 230, 0.88));
+}
+
+.highlight-value {
+  margin: 0;
+  color: var(--accent);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.highlight-label {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
 .table-wrap {
   overflow-x: auto;
   margin-top: 18px;
@@ -426,6 +529,19 @@ main {
     padding-top: 22px;
   }
 
+  .project-page .page-shell {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .project-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .project-sidebar {
+    position: static;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -439,7 +555,8 @@ main {
   }
 
   .flow-diagram,
-  .decision-grid {
+  .decision-grid,
+  .highlight-grid {
     grid-template-columns: 1fr;
   }
 
