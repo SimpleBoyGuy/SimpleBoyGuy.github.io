@@ -35,33 +35,24 @@ a {
 }
 
 .page-shell {
-  width: min(1080px, calc(100% - 40px));
+  width: min(920px, calc(100% - 40px));
   margin: 0 auto;
   padding: 48px 0 56px;
-}
-
-.hero,
-.panel,
-.footer {
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: var(--paper);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
 }
 
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 54px clamp(24px, 5vw, 56px);
-  margin-bottom: 22px;
+  padding: 20px 0 28px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.95fr) minmax(124px, 156px);
-  gap: 28px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) 144px;
+  gap: 24px;
+  align-items: start;
 }
 
 .hero-copy {
@@ -70,14 +61,7 @@ a {
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  inset: auto -10% -35% auto;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(65, 92, 72, 0.18), transparent 68%);
-  pointer-events: none;
+  content: none;
 }
 
 .eyebrow {
@@ -97,8 +81,8 @@ h2 {
 }
 
 h1 {
-  font-size: clamp(2.8rem, 7vw, 5rem);
-  max-width: 12ch;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  max-width: 14ch;
 }
 
 h2 {
@@ -115,23 +99,23 @@ h2 {
 }
 
 .subtitle {
-  margin: 18px 0 0;
+  margin: 14px 0 0;
   max-width: 58rem;
   color: var(--muted);
   font-size: 1.05rem;
 }
 
 .intro {
-  margin: 18px 0 0;
-  max-width: 52rem;
-  font-size: 1.05rem;
+  margin: 16px 0 0;
+  max-width: 46rem;
+  font-size: 1rem;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 22px;
 }
 
 .hero-actions a {
@@ -164,12 +148,11 @@ h2 {
 .portrait-frame {
   width: min(100%, 144px);
   aspect-ratio: 4 / 5;
-  padding: 6px;
-  border-radius: 20px;
-  background:
-    linear-gradient(180deg, rgba(255, 252, 246, 0.96) 0%, rgba(240, 234, 223, 0.94) 100%);
+  padding: 4px;
+  border-radius: 18px;
+  background: rgba(255, 252, 246, 0.78);
   border: 1px solid rgba(65, 92, 72, 0.12);
-  box-shadow: 0 10px 18px rgba(35, 40, 35, 0.07);
+  box-shadow: 0 8px 16px rgba(35, 40, 35, 0.06);
 }
 
 .portrait-frame img {
@@ -182,21 +165,12 @@ h2 {
 }
 
 main {
-  display: grid;
-  gap: 22px;
+  display: block;
 }
 
-.grid {
-  display: grid;
-  gap: 22px;
-}
-
-.two-col {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.panel {
-  padding: 28px;
+.content-section {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
   animation: rise 480ms ease both;
 }
 
@@ -217,34 +191,26 @@ main {
   color: var(--muted);
 }
 
-.tag-list,
-.compact-list {
+.plain-list {
   margin: 0;
-  padding: 0;
-  list-style: none;
+  padding-left: 20px;
 }
 
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.plain-list li + li {
+  margin-top: 10px;
 }
 
-.tag-list li {
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: var(--accent-soft);
+.interests-list li {
   color: var(--accent);
-  font-weight: 600;
 }
 
 .publication-list {
   display: grid;
-  gap: 18px;
+  gap: 0;
 }
 
 .publication-list article {
-  padding: 14px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -266,7 +232,7 @@ main {
 
 .timeline {
   display: grid;
-  gap: 18px;
+  gap: 20px;
 }
 
 .timeline-item {
@@ -278,25 +244,13 @@ main {
   margin-bottom: 0;
 }
 
-.compact-list {
-  display: grid;
-  gap: 12px;
-}
-
-.compact-list li {
-  padding: 12px 14px;
-  border-radius: 18px;
-  background: rgba(255, 250, 241, 0.72);
-  border: 1px solid rgba(62, 73, 61, 0.08);
-}
-
 .footer {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
   justify-content: space-between;
-  margin-top: 22px;
-  padding: 18px 24px;
+  margin-top: 8px;
+  padding: 18px 0 0;
   font-size: 0.96rem;
 }
 
@@ -314,7 +268,7 @@ main {
 
 @media (max-width: 840px) {
   .page-shell {
-    width: min(100% - 24px, 1080px);
+    width: min(100% - 24px, 920px);
     padding-top: 22px;
   }
 
@@ -322,14 +276,8 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .two-col {
-    grid-template-columns: 1fr;
-  }
-
-  .hero,
-  .panel {
-    padding: 22px;
-    border-radius: 24px;
+  .hero {
+    padding-bottom: 22px;
   }
 
   .portrait-frame {
@@ -337,6 +285,6 @@ main {
   }
 
   .footer {
-    padding: 16px 18px;
+    padding-top: 16px;
   }
 }
