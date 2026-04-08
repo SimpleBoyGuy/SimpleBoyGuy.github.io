@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css?v=20260408d">
+  <link rel="stylesheet" href="styles.css?v=20260408e">
 </head>
 <body>
   <div class="page-shell">
@@ -122,6 +122,28 @@
       </section>
 
       <section class="content-section">
+        <h2>Key Contributions</h2>
+        <ul class="plain-list">
+          <li>
+            <strong>A new policy representation:</strong> APDPO represents scheduling decisions with an
+            action-priority vector instead of relying purely on black-box policy parameterization.
+          </li>
+          <li>
+            <strong>A direct update rule:</strong> the algorithm updates action priorities in a gradient-free
+            manner, making the policy adaptation process easier to interpret.
+          </li>
+          <li>
+            <strong>Theoretical support:</strong> the paper establishes policy-improvement results under explicit
+            conditions, strengthening the method beyond pure empirical performance.
+          </li>
+          <li>
+            <strong>Strong benchmark results:</strong> APDPO improves over existing RL baselines and moves closer
+            to OR-Tools on standard FJSP benchmarks.
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
         <h2>Policy Representation</h2>
         <p>
           Instead of representing the policy only through a neural network, APDPO uses an
@@ -150,6 +172,28 @@
       </section>
 
       <section class="content-section">
+        <h2>Algorithm Pipeline</h2>
+        <ol class="pipeline-list">
+          <li>
+            <strong>Initialize priorities:</strong> build an action-priority vector whose entries correspond to
+            all possible machine-operation assignments.
+          </li>
+          <li>
+            <strong>Interact with the environment:</strong> sample feasible actions according to normalized action
+            priorities and roll out trajectories on FJSP instances.
+          </li>
+          <li>
+            <strong>Evaluate improvement:</strong> compare trajectory returns and state values to determine whether
+            a selected action should be reinforced.
+          </li>
+          <li>
+            <strong>Update directly:</strong> increase the selected action priority and proportionally decrease the
+            others, yielding a gradient-free policy update.
+          </li>
+        </ol>
+      </section>
+
+      <section class="content-section">
         <h2>Interpretation</h2>
         <p>
           One of the most interesting interpretations in the paper is that updating the action-priority vector can
@@ -170,6 +214,47 @@
         <p>
           For me, this is especially important because it suggests that reinforcement learning for scheduling can
           be both academically strong and computationally practical.
+        </p>
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Benchmark</th>
+                <th>Best RL Baseline</th>
+                <th>APDPO</th>
+                <th>OR-Tools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>mk</td>
+                <td>184.40</td>
+                <td><strong>178.10</strong></td>
+                <td>173.90</td>
+              </tr>
+              <tr>
+                <td>la (rdata)</td>
+                <td>1030.83</td>
+                <td><strong>961.53</strong></td>
+                <td>933.53</td>
+              </tr>
+              <tr>
+                <td>la (edata)</td>
+                <td>1175.53</td>
+                <td><strong>1059.05</strong></td>
+                <td>1026.80</td>
+              </tr>
+              <tr>
+                <td>la (vdata)</td>
+                <td>944.85</td>
+                <td><strong>926.45</strong></td>
+                <td>920.40</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">
+          Reported values are average makespan results summarized from Table I of the CDC 2025 paper.
         </p>
       </section>
 

@@ -146,6 +146,11 @@ h2 {
   text-decoration: none;
 }
 
+.project-links a:hover,
+.section-link a:hover {
+  text-decoration: underline;
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -221,8 +226,54 @@ main {
   margin-top: 10px;
 }
 
+.pipeline-list {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.pipeline-list li + li {
+  margin-top: 14px;
+}
+
 .interests-list li {
   color: var(--accent);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 18px;
+  border: 1px solid rgba(62, 73, 61, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 252, 246, 0.72);
+}
+
+.benchmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+.benchmark-table th,
+.benchmark-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(62, 73, 61, 0.1);
+  text-align: left;
+}
+
+.benchmark-table th {
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(65, 92, 72, 0.06);
+}
+
+.benchmark-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.benchmark-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.96rem;
 }
 
 .publication-list {
