@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APDPO Project | Wenjun Zheng</title>
+  <meta
+    name="description"
+    content="Project page for reinforcement learning on the Flexible Job Shop Scheduling Problem by Wenjun Zheng."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css?v=20260408d">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="subpage-hero">
+      <p class="eyebrow">Project</p>
+      <h1>APDPO for FJSP</h1>
+      <p class="subtitle">
+        Reinforcement Learning for the Flexible Job Shop Scheduling Problem
+      </p>
+      <p class="intro">
+        This project studies how reinforcement learning can be used to solve the Flexible Job Shop Scheduling
+        Problem (FJSP), with the goal of producing scheduling policies that are both high-quality and practical
+        for complex manufacturing decision-making.
+      </p>
+      <div class="hero-actions">
+        <a href="index.html">Back to Homepage</a>
+        <a href="https://scholar.google.com/citations?user=0Aq3UvAAAAAJ&hl=zh-CN" target="_blank" rel="noreferrer">Google Scholar</a>
+      </div>
+    </header>
+
+    <main class="content-flow">
+      <section class="content-section">
+        <h2>Project Overview</h2>
+        <p>
+          The Flexible Job Shop Scheduling Problem extends classical job shop scheduling by allowing each
+          operation to be processed on multiple candidate machines. This flexibility makes the problem much more
+          realistic for practical production systems, but also significantly increases the complexity of making
+          good scheduling decisions.
+        </p>
+        <p>
+          In this project, I explore reinforcement learning as a way to learn scheduling policies directly from
+          problem instances and system feedback, instead of relying only on handcrafted dispatching rules or
+          expensive iterative optimization procedures.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Problem Description</h2>
+        <p>
+          In FJSP, each job consists of a sequence of operations with precedence constraints. For every operation,
+          there may be several compatible machines, and the processing time can vary across machines. A solver
+          therefore needs to determine not only <strong>which operation</strong> to schedule next, but also
+          <strong>which machine</strong> should process it.
+        </p>
+        <p>
+          This creates a difficult combinatorial decision problem because sequencing and machine assignment are
+          tightly coupled. The search space grows rapidly as the number of jobs, operations, and machine choices
+          increases, making high-quality and efficient decision-making especially challenging.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Why Reinforcement Learning</h2>
+        <p>
+          Traditional approaches to FJSP often face a trade-off. Exact optimization methods can be accurate but
+          computationally expensive, while heuristic and metaheuristic methods can be faster but may not always
+          provide consistently strong solutions. Reinforcement learning offers a different perspective: learning a
+          policy that can make sequential scheduling decisions adaptively from state information.
+        </p>
+        <p>
+          My goal is not only to obtain strong scheduling performance, but also to build RL-based solvers that
+          are interpretable, efficient, and capable of supporting practical decision-making settings.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>APDPO</h2>
+        <p>
+          My CDC 2025 work introduces <strong>Action-Priority Driven Policy Optimization (APDPO)</strong>, a
+          reinforcement learning method designed for FJSP. The method is motivated by three main goals:
+          improving solution quality, increasing interpretability through a more intuitive policy representation,
+          and reducing computational cost through direct policy updates.
+        </p>
+        <ul class="plain-list">
+          <li>Action-priority policy representation for more transparent scheduling decisions</li>
+          <li>Direct, gradient-free policy updates for improved computational efficiency</li>
+          <li>A reinforcement learning framework tailored to the structural characteristics of FJSP</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>Current Focus</h2>
+        <p>
+          The broader project aims to develop a reinforcement learning solver for scheduling problems that is not
+          only academically strong, but also meaningful for real-world applications. I am especially interested
+          in connecting rigorous algorithmic ideas with practical scheduling environments where decision quality,
+          efficiency, and scalability all matter.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Outputs</h2>
+        <ul class="plain-list">
+          <li><strong>CDC 2025 paper:</strong> Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</li>
+          <li><strong>Conference listing:</strong> 2025 IEEE Conference on Decision and Control proceedings</li>
+          <li><strong>Public abstract:</strong> DYP Research and Travel Award Poster Session abstract</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>Note</h2>
+        <p>
+          This page is currently based on publicly accessible conference information and abstract-level material.
+          I could not access the full IEEE paper text from this environment. If I later add the full paper or a
+          project repository, I can expand this page with more technical details, figures, and implementation
+          notes.
+        </p>
+        <p class="project-links">
+          <a href="https://www.proceedings.com/content/083/083768webtoc.pdf" target="_blank" rel="noreferrer">CDC 2025 Proceedings</a>
+          <a href="https://sds.cuhk.edu.cn/sites/default/files/2025-12/%E8%AE%AE%E7%A8%8B%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="noreferrer">Public Abstract</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Last updated: April 2026</p>
+      <p><a href="index.html">Return to homepage</a></p>
+    </footer>
+  </div>
+</body>
+</html>

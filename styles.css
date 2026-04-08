@@ -139,6 +139,20 @@ h2 {
   border-color: rgba(65, 92, 72, 0.28);
 }
 
+.section-link a,
+.project-links a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+}
+
 .hero-portrait {
   position: relative;
   z-index: 1;
@@ -167,6 +181,12 @@ h2 {
 
 main {
   display: block;
+}
+
+.subpage-hero {
+  padding: 20px 0 28px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
 }
 
 .content-section {
