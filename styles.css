@@ -239,6 +239,88 @@ main {
   color: var(--accent);
 }
 
+.flow-diagram {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.flow-card {
+  padding: 18px 16px;
+  border: 1px solid rgba(62, 73, 61, 0.12);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(245, 239, 230, 0.88));
+  box-shadow: 0 10px 24px rgba(47, 53, 41, 0.06);
+}
+
+.flow-card h3 {
+  margin: 10px 0 10px;
+  font-size: 1.02rem;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+.flow-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.flow-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(65, 92, 72, 0.1);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.flow-arrow {
+  display: none;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.decision-card {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(62, 73, 61, 0.1);
+  background: rgba(255, 252, 246, 0.78);
+}
+
+.decision-card p {
+  margin: 0;
+}
+
+.decision-card p + p {
+  margin-top: 10px;
+}
+
+.decision-label {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.decision-score {
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .table-wrap {
   overflow-x: auto;
   margin-top: 18px;
@@ -354,6 +436,11 @@ main {
 
   .portrait-frame {
     width: min(100%, 152px);
+  }
+
+  .flow-diagram,
+  .decision-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer {

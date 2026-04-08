@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css?v=20260408e">
+  <link rel="stylesheet" href="styles.css?v=20260408f">
 </head>
 <body>
   <div class="page-shell">
@@ -90,6 +90,35 @@
           Under this design, the total return over a trajectory becomes the negative makespan, so maximizing
           return is equivalent to minimizing the scheduling objective.
         </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Method Flow</h2>
+        <div class="flow-diagram">
+          <div class="flow-card">
+            <span class="flow-step">01</span>
+            <h3>Model the FJSP State</h3>
+            <p>Encode job progress, machine availability, active work, and system time into the RL state.</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-card">
+            <span class="flow-step">02</span>
+            <h3>Construct Action Priorities</h3>
+            <p>Assign a priority value to each candidate machine-operation action.</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-card">
+            <span class="flow-step">03</span>
+            <h3>Roll Out Trajectories</h3>
+            <p>Sample feasible actions according to normalized priorities and observe scheduling returns.</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-card">
+            <span class="flow-step">04</span>
+            <h3>Update Without Gradients</h3>
+            <p>Directly reinforce effective actions and reduce competing priorities to improve the policy.</p>
+          </div>
+        </div>
       </section>
 
       <section class="content-section">
@@ -200,6 +229,36 @@
           be viewed as implicitly refining the problem instance itself. Since priorities are initialized from
           processing-time information, changing priorities can be understood as modifying the effective structure
           seen by the policy, so that a simple deterministic scheduler performs better on the refined instance.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Decision Example</h2>
+        <p>
+          A useful way to understand APDPO is to view each decision point as a competition among feasible
+          assignments. Suppose a current state allows three candidate actions:
+        </p>
+        <div class="decision-grid">
+          <div class="decision-card">
+            <p class="decision-label">Action A</p>
+            <p>Assign operation <strong>O1,2</strong> to machine <strong>M1</strong></p>
+            <p class="decision-score">Priority: 0.42</p>
+          </div>
+          <div class="decision-card">
+            <p class="decision-label">Action B</p>
+            <p>Assign operation <strong>O2,1</strong> to machine <strong>M3</strong></p>
+            <p class="decision-score">Priority: 0.31</p>
+          </div>
+          <div class="decision-card">
+            <p class="decision-label">Action C</p>
+            <p>Assign operation <strong>O3,2</strong> to machine <strong>M2</strong></p>
+            <p class="decision-score">Priority: 0.27</p>
+          </div>
+        </div>
+        <p>
+          Under APDPO, the policy distribution is obtained by normalizing these priorities over feasible actions.
+          If Action A leads to a better return, APDPO increases its priority and proportionally suppresses the
+          others, making future decisions more aligned with improved schedules.
         </p>
       </section>
 
