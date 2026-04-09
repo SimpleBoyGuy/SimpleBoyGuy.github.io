@@ -108,29 +108,13 @@
           </section>
 
           <section class="content-section" id="pipeline">
-            <h2>Method Flow</h2>
-            <div class="flow-diagram">
-              <div class="flow-card">
-                <span class="flow-step">01</span>
-                <h3>Model the FJSP State</h3>
-                <p>Encode job progress, machine availability, active work, and system time into the RL state.</p>
-              </div>
-              <div class="flow-card">
-                <span class="flow-step">02</span>
-                <h3>Construct Action Priorities</h3>
-                <p>Assign a priority value to each candidate machine-operation action.</p>
-              </div>
-              <div class="flow-card">
-                <span class="flow-step">03</span>
-                <h3>Roll Out Trajectories</h3>
-                <p>Sample feasible actions according to normalized priorities and observe scheduling returns.</p>
-              </div>
-              <div class="flow-card">
-                <span class="flow-step">04</span>
-                <h3>Update Without Gradients</h3>
-                <p>Directly reinforce effective actions and reduce competing priorities to improve the policy.</p>
-              </div>
-            </div>
+            <h2>Method Overview</h2>
+            <ol class="pipeline-list">
+              <li><strong>State modeling:</strong> encode job progress, machine availability, active work, and system time into the RL state.</li>
+              <li><strong>Priority construction:</strong> assign a priority value to each candidate machine-operation action.</li>
+              <li><strong>Trajectory rollout:</strong> sample feasible actions according to normalized priorities and collect scheduling returns.</li>
+              <li><strong>Direct update:</strong> reinforce effective actions and proportionally reduce competing priorities through a gradient-free update rule.</li>
+            </ol>
           </section>
 
           <section class="content-section">
@@ -142,8 +126,8 @@
             </p>
             <p>
               Reinforcement learning offers a different perspective by learning a sequential decision policy directly
-              from scheduling states. For me, the appeal is not only better performance, but also the possibility of
-              building scheduling solvers that are adaptive, efficient, and practically deployable.
+              from scheduling states. This perspective is attractive because it combines adaptive decision-making
+              with the possibility of building efficient and practically deployable scheduling solvers.
             </p>
           </section>
 
@@ -249,23 +233,10 @@
               inference time.
             </p>
             <p>
-              For me, this is especially important because it suggests that reinforcement learning for scheduling can
-              be both academically strong and computationally practical.
+              Across the summarized benchmark groups, APDPO consistently improves upon the best reported RL baseline
+              and remains competitive with OR-Tools.
             </p>
-            <div class="highlight-grid">
-              <div class="highlight-card">
-                <p class="highlight-value">Stronger</p>
-                <p class="highlight-label">than reported RL baselines on the summarized benchmark groups</p>
-              </div>
-              <div class="highlight-card">
-                <p class="highlight-value">Closer</p>
-                <p class="highlight-label">to OR-Tools while keeping the RL decision-making perspective</p>
-              </div>
-              <div class="highlight-card">
-                <p class="highlight-value">Lower Cost</p>
-                <p class="highlight-label">in inference time than the compared RL methods in Table I</p>
-              </div>
-            </div>
+            <p class="table-caption"><strong>Table 1.</strong> Average makespan comparison on representative benchmark groups summarized from Table I of the CDC 2025 paper.</p>
             <div class="table-wrap">
               <table class="benchmark-table">
                 <thead>
@@ -304,9 +275,7 @@
                 </tbody>
               </table>
             </div>
-            <p class="benchmark-note">
-              Reported values are average makespan results summarized from Table I of the CDC 2025 paper.
-            </p>
+            <p class="benchmark-note">Reported values are average makespan results summarized from Table I of the CDC 2025 paper.</p>
           </section>
 
           <section class="content-section">
@@ -326,18 +295,6 @@
               <li>Action-Priority Driven Policy Optimization via Gradient-Free Updates for Flexible Job Shop Problem (under review)</li>
               <li>WARP-RL: Instance-Space Warping Reinforcement Learning for Flexible Job Shop Scheduling (under review)</li>
             </ul>
-          </section>
-
-          <section class="content-section">
-            <h2>Note</h2>
-            <p>
-              This page is a concise project-oriented summary based on the full CDC 2025 paper. I may later extend it
-              with figures, benchmark tables, implementation notes, and code links.
-            </p>
-            <p class="project-links">
-              <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
-              <a href="https://doi.org/10.1109/CDC57313.2025.11312736" target="_blank" rel="noreferrer">DOI Page</a>
-            </p>
           </section>
         </main>
 
