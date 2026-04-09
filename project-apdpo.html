@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Spectral:wght@400;600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css?v=20260409c">
+  <link rel="stylesheet" href="styles.css?v=20260409d">
 </head>
 <body class="project-page">
   <div class="page-shell">
@@ -63,55 +63,123 @@
             </p>
             <figure class="paper-figure">
               <svg class="scientific-diagram" viewBox="0 0 960 360" role="img" aria-label="FJSP formulation diagram">
-                <rect x="20" y="20" width="920" height="320" rx="18" class="fig-bg" />
+                <defs>
+                  <linearGradient id="fjsp-surface" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#f5f8fc" />
+                  </linearGradient>
+                  <radialGradient id="fjsp-orb-a" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#6fb4ff" stop-opacity="0.38" />
+                    <stop offset="100%" stop-color="#6fb4ff" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="fjsp-orb-b" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffcb6b" stop-opacity="0.28" />
+                    <stop offset="100%" stop-color="#ffcb6b" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="fjsp-orb-c" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#70d6b6" stop-opacity="0.28" />
+                    <stop offset="100%" stop-color="#70d6b6" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="job-grad-a" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f8fbff" />
+                    <stop offset="100%" stop-color="#dcecff" />
+                  </linearGradient>
+                  <linearGradient id="job-grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fff8ea" />
+                    <stop offset="100%" stop-color="#ffe0a6" />
+                  </linearGradient>
+                  <linearGradient id="job-grad-c" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f4fffb" />
+                    <stop offset="100%" stop-color="#cdeee4" />
+                  </linearGradient>
+                  <linearGradient id="machine-grad-a" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f7f9fd" />
+                    <stop offset="100%" stop-color="#d8e4f2" />
+                  </linearGradient>
+                  <filter id="fig-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#23313f" flood-opacity="0.12" />
+                  </filter>
+                  <marker id="fjsp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#51697e" />
+                  </marker>
+                </defs>
 
-                <text x="56" y="56" class="fig-title">Jobs and precedence structure</text>
-                <text x="640" y="56" class="fig-title">Machines</text>
-                <text x="430" y="56" class="fig-title">Eligible assignments</text>
+                <rect x="20" y="20" width="920" height="320" rx="22" fill="url(#fjsp-surface)" class="fig-frame" />
+                <circle cx="140" cy="98" r="96" fill="url(#fjsp-orb-a)" />
+                <circle cx="506" cy="276" r="92" fill="url(#fjsp-orb-b)" />
+                <circle cx="824" cy="112" r="108" fill="url(#fjsp-orb-c)" />
 
-                <text x="58" y="104" class="fig-label">J1</text>
-                <rect x="100" y="82" width="90" height="34" rx="10" class="op-box" />
-                <rect x="220" y="82" width="90" height="34" rx="10" class="op-box" />
-                <rect x="340" y="82" width="90" height="34" rx="10" class="op-box" />
-                <text x="128" y="104" class="op-text">O1,1</text>
-                <text x="248" y="104" class="op-text">O1,2</text>
-                <text x="368" y="104" class="op-text">O1,3</text>
-                <line x1="190" y1="99" x2="220" y2="99" class="seq-line" />
-                <line x1="310" y1="99" x2="340" y2="99" class="seq-line" />
+                <g filter="url(#fig-shadow)">
+                  <rect x="46" y="70" width="412" height="218" rx="24" class="fig-panel-glass" />
+                  <rect x="486" y="70" width="166" height="218" rx="24" class="fig-panel-glass fig-panel-glass-warm" />
+                  <rect x="680" y="70" width="234" height="218" rx="24" class="fig-panel-glass" />
+                </g>
 
-                <text x="58" y="172" class="fig-label">J2</text>
-                <rect x="100" y="150" width="90" height="34" rx="10" class="op-box" />
-                <rect x="220" y="150" width="90" height="34" rx="10" class="op-box" />
-                <text x="128" y="172" class="op-text">O2,1</text>
-                <text x="248" y="172" class="op-text">O2,2</text>
-                <line x1="190" y1="167" x2="220" y2="167" class="seq-line" />
+                <text x="62" y="54" class="fig-title">Operation precedence</text>
+                <text x="514" y="54" class="fig-title">Routing space</text>
+                <text x="700" y="54" class="fig-title">Machine pool</text>
 
-                <text x="58" y="240" class="fig-label">J3</text>
-                <rect x="100" y="218" width="90" height="34" rx="10" class="op-box" />
-                <rect x="220" y="218" width="90" height="34" rx="10" class="op-box" />
-                <rect x="340" y="218" width="90" height="34" rx="10" class="op-box" />
-                <text x="128" y="240" class="op-text">O3,1</text>
-                <text x="248" y="240" class="op-text">O3,2</text>
-                <text x="368" y="240" class="op-text">O3,3</text>
-                <line x1="190" y1="235" x2="220" y2="235" class="seq-line" />
-                <line x1="310" y1="235" x2="340" y2="235" class="seq-line" />
+                <rect x="74" y="95" width="352" height="42" rx="21" class="job-lane" />
+                <rect x="74" y="163" width="312" height="42" rx="21" class="job-lane" />
+                <rect x="74" y="231" width="352" height="42" rx="21" class="job-lane" />
 
-                <rect x="702" y="86" width="120" height="42" rx="12" class="machine-box-svg" />
-                <rect x="702" y="154" width="120" height="42" rx="12" class="machine-box-svg" />
-                <rect x="702" y="222" width="120" height="42" rx="12" class="machine-box-svg" />
-                <text x="748" y="112" class="machine-text">M1</text>
-                <text x="748" y="180" class="machine-text">M2</text>
-                <text x="748" y="248" class="machine-text">M3</text>
+                <text x="74" y="87" class="fig-label">Job J1</text>
+                <text x="74" y="155" class="fig-label">Job J2</text>
+                <text x="74" y="223" class="fig-label">Job J3</text>
 
-                <line x1="430" y1="99" x2="702" y2="107" class="assign-line" />
-                <line x1="430" y1="99" x2="702" y2="175" class="assign-line" />
-                <line x1="310" y1="167" x2="702" y2="175" class="assign-line" />
-                <line x1="310" y1="167" x2="702" y2="243" class="assign-line" />
-                <line x1="430" y1="235" x2="702" y2="107" class="assign-line" />
-                <line x1="430" y1="235" x2="702" y2="243" class="assign-line" />
+                <rect x="108" y="99" width="82" height="34" rx="12" fill="url(#job-grad-a)" class="op-box op-box-bright" />
+                <rect x="214" y="99" width="82" height="34" rx="12" fill="url(#job-grad-b)" class="op-box op-box-bright" />
+                <rect x="320" y="99" width="82" height="34" rx="12" fill="url(#job-grad-c)" class="op-box op-box-bright" />
+                <text x="134" y="120" class="op-text">O1,1</text>
+                <text x="240" y="120" class="op-text">O1,2</text>
+                <text x="346" y="120" class="op-text">O1,3</text>
 
-                <rect x="350" y="286" width="260" height="34" rx="10" class="objective-box" />
-                <text x="408" y="307" class="objective-text">Objective: minimize makespan Cmax</text>
+                <rect x="108" y="167" width="82" height="34" rx="12" fill="url(#job-grad-b)" class="op-box op-box-bright" />
+                <rect x="214" y="167" width="82" height="34" rx="12" fill="url(#job-grad-c)" class="op-box op-box-bright" />
+                <text x="134" y="188" class="op-text">O2,1</text>
+                <text x="240" y="188" class="op-text">O2,2</text>
+
+                <rect x="108" y="235" width="82" height="34" rx="12" fill="url(#job-grad-c)" class="op-box op-box-bright" />
+                <rect x="214" y="235" width="82" height="34" rx="12" fill="url(#job-grad-a)" class="op-box op-box-bright" />
+                <rect x="320" y="235" width="82" height="34" rx="12" fill="url(#job-grad-b)" class="op-box op-box-bright" />
+                <text x="134" y="256" class="op-text">O3,1</text>
+                <text x="240" y="256" class="op-text">O3,2</text>
+                <text x="346" y="256" class="op-text">O3,3</text>
+
+                <line x1="190" y1="116" x2="214" y2="116" class="job-link" marker-end="url(#fjsp-arrow)" />
+                <line x1="296" y1="116" x2="320" y2="116" class="job-link" marker-end="url(#fjsp-arrow)" />
+                <line x1="190" y1="184" x2="214" y2="184" class="job-link" marker-end="url(#fjsp-arrow)" />
+                <line x1="190" y1="252" x2="214" y2="252" class="job-link" marker-end="url(#fjsp-arrow)" />
+                <line x1="296" y1="252" x2="320" y2="252" class="job-link" marker-end="url(#fjsp-arrow)" />
+
+                <path d="M420 116 C470 116, 500 98, 534 110" class="assignment-arc" />
+                <path d="M420 116 C470 116, 500 154, 534 166" class="assignment-arc assignment-arc-alt" />
+                <path d="M296 184 C434 176, 454 168, 534 166" class="assignment-arc assignment-arc-gold" />
+                <path d="M296 184 C430 184, 466 236, 534 222" class="assignment-arc assignment-arc-alt" />
+                <path d="M402 252 C472 230, 490 112, 534 110" class="assignment-arc assignment-arc-cool" />
+                <path d="M402 252 C468 252, 494 230, 534 222" class="assignment-arc assignment-arc-gold" />
+
+                <circle cx="558" cy="110" r="22" class="routing-node routing-node-blue" />
+                <circle cx="558" cy="166" r="22" class="routing-node routing-node-gold" />
+                <circle cx="558" cy="222" r="22" class="routing-node routing-node-green" />
+                <text x="547" y="115" class="routing-text">M1</text>
+                <text x="547" y="171" class="routing-text">M2</text>
+                <text x="547" y="227" class="routing-text">M3</text>
+
+                <g filter="url(#fig-shadow)">
+                  <rect x="716" y="96" width="162" height="38" rx="14" fill="url(#machine-grad-a)" class="machine-box-svg machine-box-emphasis" />
+                  <rect x="716" y="160" width="162" height="38" rx="14" fill="url(#machine-grad-a)" class="machine-box-svg machine-box-emphasis" />
+                  <rect x="716" y="224" width="162" height="38" rx="14" fill="url(#machine-grad-a)" class="machine-box-svg machine-box-emphasis" />
+                </g>
+                <circle cx="744" cy="115" r="12" class="machine-core machine-core-blue" />
+                <circle cx="744" cy="179" r="12" class="machine-core machine-core-gold" />
+                <circle cx="744" cy="243" r="12" class="machine-core machine-core-green" />
+                <text x="768" y="120" class="machine-text">M1  parallel capability</text>
+                <text x="768" y="184" class="machine-text">M2  routing flexibility</text>
+                <text x="768" y="248" class="machine-text">M3  processing resource</text>
+
+                <rect x="334" y="298" width="294" height="28" rx="14" class="objective-chip" />
+                <text x="392" y="317" class="objective-text">Objective: minimize makespan Cmax</text>
               </svg>
               <figcaption class="figure-caption">
                 <strong>Figure 1.</strong> Flexible job shop scheduling requires jointly modeling operation precedence
@@ -128,42 +196,107 @@
             </p>
             <figure class="paper-figure">
               <svg class="scientific-diagram" viewBox="0 0 960 290" role="img" aria-label="RL solver framework diagram">
-                <rect x="20" y="20" width="920" height="250" rx="18" class="fig-bg" />
+                <defs>
+                  <radialGradient id="solver-orb-a" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#6fb4ff" stop-opacity="0.34" />
+                    <stop offset="100%" stop-color="#6fb4ff" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="solver-orb-b" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffcb6b" stop-opacity="0.26" />
+                    <stop offset="100%" stop-color="#ffcb6b" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="solver-orb-c" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#70d6b6" stop-opacity="0.26" />
+                    <stop offset="100%" stop-color="#70d6b6" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="solver-surface" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#f4f7fb" />
+                  </linearGradient>
+                  <linearGradient id="solver-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#edf6ff" />
+                    <stop offset="100%" stop-color="#cfe3fb" />
+                  </linearGradient>
+                  <linearGradient id="solver-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fff7e7" />
+                    <stop offset="100%" stop-color="#ffe1a6" />
+                  </linearGradient>
+                  <linearGradient id="solver-mint" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#effcf8" />
+                    <stop offset="100%" stop-color="#d3efe6" />
+                  </linearGradient>
+                  <linearGradient id="solver-highlight" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#d6e7ff" />
+                    <stop offset="50%" stop-color="#ffe4ad" />
+                    <stop offset="100%" stop-color="#d0efe7" />
+                  </linearGradient>
+                  <filter id="solver-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#253646" flood-opacity="0.12" />
+                  </filter>
+                  <marker id="solver-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#557089" />
+                  </marker>
+                </defs>
 
-                <rect x="48" y="104" width="128" height="54" rx="12" class="module-box" />
-                <text x="80" y="126" class="module-title">FJSP</text>
-                <text x="74" y="146" class="module-sub">instance</text>
+                <rect x="20" y="20" width="920" height="250" rx="22" fill="url(#solver-surface)" class="fig-frame" />
+                <circle cx="154" cy="86" r="80" fill="url(#solver-orb-a)" />
+                <circle cx="494" cy="210" r="88" fill="url(#solver-orb-b)" />
+                <circle cx="810" cy="104" r="96" fill="url(#solver-orb-c)" />
 
-                <rect x="222" y="88" width="150" height="86" rx="12" class="module-box" />
-                <text x="258" y="116" class="module-title">MDP state</text>
-                <text x="248" y="138" class="module-sub">job progress</text>
-                <text x="244" y="156" class="module-sub">machine status</text>
+                <rect x="58" y="72" width="842" height="146" rx="26" class="framework-track" />
+                <rect x="58" y="72" width="842" height="146" rx="26" class="framework-track-shine" />
 
-                <rect x="420" y="88" width="150" height="86" rx="12" class="module-box" />
-                <text x="450" y="116" class="module-title">Feasible</text>
-                <text x="446" y="138" class="module-title">actions A(s)</text>
-                <text x="455" y="160" class="module-sub">machine-operation pairs</text>
+                <g filter="url(#solver-shadow)">
+                  <rect x="76" y="96" width="132" height="98" rx="20" fill="url(#solver-blue)" class="module-box module-box-rich" />
+                  <rect x="234" y="84" width="166" height="122" rx="20" fill="url(#solver-mint)" class="module-box module-box-rich" />
+                  <rect x="428" y="84" width="176" height="122" rx="20" fill="url(#solver-highlight)" class="module-box-strong module-box-rich" />
+                  <rect x="632" y="84" width="154" height="122" rx="20" fill="url(#solver-amber)" class="module-box module-box-rich" />
+                  <rect x="810" y="96" width="98" height="98" rx="20" fill="url(#solver-blue)" class="module-box module-box-rich" />
+                </g>
 
-                <rect x="618" y="78" width="150" height="106" rx="12" class="module-box-strong" />
-                <text x="651" y="108" class="module-title">Action-priority</text>
-                <text x="685" y="130" class="module-title">vector Φ</text>
-                <text x="666" y="156" class="module-sub">policy representation</text>
+                <line x1="208" y1="145" x2="234" y2="145" class="module-line module-line-rich" marker-end="url(#solver-arrow)" />
+                <line x1="400" y1="145" x2="428" y2="145" class="module-line module-line-rich" marker-end="url(#solver-arrow)" />
+                <line x1="604" y1="145" x2="632" y2="145" class="module-line module-line-rich" marker-end="url(#solver-arrow)" />
+                <line x1="786" y1="145" x2="810" y2="145" class="module-line module-line-rich" marker-end="url(#solver-arrow)" />
 
-                <rect x="804" y="88" width="104" height="86" rx="12" class="module-box" />
-                <text x="828" y="116" class="module-title">Rollout</text>
-                <text x="821" y="138" class="module-sub">return G(τ)</text>
-                <text x="824" y="160" class="module-sub">value V(s)</text>
+                <text x="96" y="126" class="module-title">Instance</text>
+                <text x="104" y="148" class="module-sub">FJSP graph</text>
+                <text x="102" y="168" class="module-sub">jobs, machines</text>
+                <circle cx="160" cy="124" r="7" class="framework-node framework-node-blue" />
+                <circle cx="178" cy="142" r="7" class="framework-node framework-node-gold" />
+                <circle cx="160" cy="160" r="7" class="framework-node framework-node-green" />
+                <line x1="160" y1="124" x2="178" y2="142" class="framework-link" />
+                <line x1="178" y1="142" x2="160" y2="160" class="framework-link" />
 
-                <line x1="176" y1="131" x2="222" y2="131" class="module-line" />
-                <line x1="372" y1="131" x2="420" y2="131" class="module-line" />
-                <line x1="570" y1="131" x2="618" y2="131" class="module-line" />
-                <line x1="768" y1="131" x2="804" y2="131" class="module-line" />
+                <text x="262" y="116" class="module-title">State Encoder</text>
+                <text x="260" y="140" class="module-sub">job progress, queues</text>
+                <text x="262" y="160" class="module-sub">machine availability</text>
+                <rect x="262" y="174" width="34" height="10" rx="5" class="mini-bar mini-bar-blue" />
+                <rect x="302" y="166" width="34" height="18" rx="6" class="mini-bar mini-bar-gold" />
+                <rect x="342" y="156" width="34" height="28" rx="6" class="mini-bar mini-bar-green" />
 
-                <path d="M856 174 C856 226, 690 226, 690 184" class="feedback-line" />
-                <polygon points="686,188 690,176 695,188" class="feedback-arrow" />
+                <text x="458" y="116" class="module-title">Policy Core</text>
+                <text x="458" y="140" class="module-sub">feasible-action scoring</text>
+                <text x="458" y="160" class="module-sub">priority representation</text>
+                <rect x="462" y="174" width="112" height="14" rx="7" class="priority-strip" />
+                <circle cx="486" cy="181" r="5" class="framework-node framework-node-blue" />
+                <circle cx="522" cy="181" r="5" class="framework-node framework-node-gold" />
+                <circle cx="558" cy="181" r="5" class="framework-node framework-node-green" />
 
-                <rect x="590" y="206" width="198" height="40" rx="10" class="apdpo-box" />
-                <text x="628" y="230" class="apdpo-text">APDPO direct priority update</text>
+                <text x="658" y="116" class="module-title">Rollout</text>
+                <text x="656" y="140" class="module-sub">schedule simulation</text>
+                <text x="656" y="160" class="module-sub">return and makespan</text>
+                <rect x="658" y="172" width="20" height="14" rx="5" class="gantt-chip gantt-chip-blue" />
+                <rect x="682" y="166" width="34" height="20" rx="5" class="gantt-chip gantt-chip-gold" />
+                <rect x="720" y="170" width="42" height="16" rx="5" class="gantt-chip gantt-chip-green" />
+
+                <text x="830" y="126" class="module-title">Update</text>
+                <text x="830" y="148" class="module-sub">policy</text>
+                <text x="824" y="168" class="module-sub">improvement</text>
+
+                <path d="M860 198 C860 236, 672 244, 516 236 C368 228, 212 236, 138 198" class="feedback-line feedback-line-rich" marker-end="url(#solver-arrow)" />
+                <rect x="394" y="228" width="180" height="26" rx="13" class="update-chip" />
+                <text x="434" y="245" class="apdpo-text">Priority update / APDPO</text>
               </svg>
               <figcaption class="figure-caption">
                 <strong>Figure 2.</strong> Schematic overview of the RL solver. The current CDC 2025 paper studies
@@ -180,52 +313,96 @@
             </p>
             <figure class="paper-figure">
               <svg class="scientific-diagram" viewBox="0 0 960 360" role="img" aria-label="Benchmark comparison chart">
-                <rect x="20" y="20" width="920" height="320" rx="18" class="fig-bg" />
+                <defs>
+                  <radialGradient id="result-orb-a" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#6fb4ff" stop-opacity="0.34" />
+                    <stop offset="100%" stop-color="#6fb4ff" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="result-orb-b" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffcb6b" stop-opacity="0.26" />
+                    <stop offset="100%" stop-color="#ffcb6b" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="result-orb-c" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#70d6b6" stop-opacity="0.24" />
+                    <stop offset="100%" stop-color="#70d6b6" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="result-surface" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#f6f9fc" />
+                  </linearGradient>
+                  <linearGradient id="bar-base-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#b8c0ca" />
+                    <stop offset="100%" stop-color="#8c99a6" />
+                  </linearGradient>
+                  <linearGradient id="bar-solver-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#7bc0ff" />
+                    <stop offset="100%" stop-color="#2d69a3" />
+                  </linearGradient>
+                  <linearGradient id="bar-or-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4fe0ba" />
+                    <stop offset="100%" stop-color="#23886f" />
+                  </linearGradient>
+                </defs>
 
-                <text x="60" y="58" class="fig-title">Normalized makespan ratio (lower is better)</text>
-                <text x="62" y="84" class="axis-note">Baseline RL = 1.00 for each benchmark group</text>
+                <rect x="20" y="20" width="920" height="320" rx="22" fill="url(#result-surface)" class="fig-frame" />
+                <circle cx="824" cy="82" r="90" fill="url(#result-orb-a)" />
+                <circle cx="694" cy="258" r="84" fill="url(#result-orb-c)" />
+                <circle cx="184" cy="110" r="92" fill="url(#result-orb-b)" />
 
-                <line x1="84" y1="292" x2="900" y2="292" class="axis-line" />
-                <line x1="84" y1="90" x2="84" y2="292" class="axis-line" />
+                <text x="62" y="58" class="fig-title">Normalized makespan ratio</text>
+                <text x="62" y="82" class="axis-note">Lower values indicate stronger scheduling performance.</text>
 
-                <line x1="84" y1="100" x2="900" y2="100" class="grid-line" />
-                <line x1="84" y1="146" x2="900" y2="146" class="grid-line" />
-                <line x1="84" y1="192" x2="900" y2="192" class="grid-line" />
-                <line x1="84" y1="238" x2="900" y2="238" class="grid-line" />
+                <rect x="88" y="96" width="798" height="196" rx="24" class="chart-panel" />
+                <line x1="116" y1="264" x2="860" y2="264" class="axis-line axis-line-soft" />
+                <line x1="116" y1="110" x2="116" y2="264" class="axis-line axis-line-soft" />
 
-                <text x="52" y="297" class="axis-label">0.80</text>
-                <text x="52" y="243" class="axis-label">0.85</text>
-                <text x="52" y="197" class="axis-label">0.90</text>
-                <text x="52" y="151" class="axis-label">0.95</text>
-                <text x="52" y="105" class="axis-label">1.00</text>
+                <line x1="116" y1="114" x2="860" y2="114" class="grid-line" />
+                <line x1="116" y1="152" x2="860" y2="152" class="grid-line" />
+                <line x1="116" y1="190" x2="860" y2="190" class="grid-line" />
+                <line x1="116" y1="228" x2="860" y2="228" class="grid-line" />
 
-                <rect x="150" y="100" width="22" height="192" class="bar-base" />
-                <rect x="178" y="113" width="22" height="179" class="bar-solver" />
-                <rect x="206" y="120" width="22" height="172" class="bar-or" />
+                <text x="80" y="269" class="axis-label">0.80</text>
+                <text x="80" y="233" class="axis-label">0.85</text>
+                <text x="80" y="195" class="axis-label">0.90</text>
+                <text x="80" y="157" class="axis-label">0.95</text>
+                <text x="80" y="119" class="axis-label">1.00</text>
 
-                <rect x="330" y="100" width="22" height="192" class="bar-base" />
-                <rect x="358" y="164" width="22" height="128" class="bar-solver" />
-                <rect x="386" y="180" width="22" height="112" class="bar-or" />
+                <rect x="146" y="126" width="126" height="126" rx="18" class="group-panel" />
+                <rect x="324" y="126" width="126" height="126" rx="18" class="group-panel" />
+                <rect x="502" y="126" width="126" height="126" rx="18" class="group-panel" />
+                <rect x="680" y="126" width="126" height="126" rx="18" class="group-panel" />
 
-                <rect x="510" y="100" width="22" height="192" class="bar-base" />
-                <rect x="538" y="198" width="22" height="94" class="bar-solver" />
-                <rect x="566" y="222" width="22" height="70" class="bar-or" />
+                <rect x="172" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
+                <rect x="204" y="124" width="24" height="140" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
+                <rect x="236" y="130" width="24" height="134" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
 
-                <rect x="690" y="100" width="22" height="192" class="bar-base" />
-                <rect x="718" y="119" width="22" height="173" class="bar-solver" />
-                <rect x="746" y="125" width="22" height="167" class="bar-or" />
+                <rect x="350" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
+                <rect x="382" y="164" width="24" height="100" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
+                <rect x="414" y="176" width="24" height="88" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
 
-                <text x="148" y="316" class="group-label">mk</text>
-                <text x="312" y="316" class="group-label">la(r)</text>
-                <text x="492" y="316" class="group-label">la(e)</text>
-                <text x="672" y="316" class="group-label">la(v)</text>
+                <rect x="528" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
+                <rect x="560" y="190" width="24" height="74" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
+                <rect x="592" y="210" width="24" height="54" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
 
-                <rect x="646" y="52" width="16" height="16" class="bar-base" />
-                <text x="670" y="64" class="legend-label">Best RL baseline</text>
-                <rect x="778" y="52" width="16" height="16" class="bar-solver" />
-                <text x="802" y="64" class="legend-label">RL Solver</text>
-                <rect x="646" y="74" width="16" height="16" class="bar-or" />
-                <text x="670" y="86" class="legend-label">OR-Tools</text>
+                <rect x="706" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
+                <rect x="738" y="129" width="24" height="135" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
+                <rect x="770" y="134" width="24" height="130" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
+
+                <rect x="170" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
+                <rect x="348" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
+                <rect x="526" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
+                <rect x="704" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
+                <text x="204" y="294" class="group-label">mk</text>
+                <text x="375" y="294" class="group-label">la(r)</text>
+                <text x="554" y="294" class="group-label">la(e)</text>
+                <text x="732" y="294" class="group-label">la(v)</text>
+
+                <rect x="612" y="54" width="18" height="18" rx="5" fill="url(#bar-base-grad)" class="bar-base" />
+                <text x="638" y="67" class="legend-label">Best RL baseline</text>
+                <rect x="768" y="54" width="18" height="18" rx="5" fill="url(#bar-solver-grad)" class="bar-solver" />
+                <text x="794" y="67" class="legend-label">RL Solver</text>
+                <rect x="612" y="79" width="18" height="18" rx="5" fill="url(#bar-or-grad)" class="bar-or" />
+                <text x="638" y="92" class="legend-label">OR-Tools</text>
               </svg>
               <figcaption class="figure-caption">
                 <strong>Figure 3.</strong> Normalized performance view of representative benchmark groups. The RL solver

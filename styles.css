@@ -361,28 +361,34 @@ main {
 
 .paper-figure {
   margin: 20px 0 0;
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--paper);
+  padding: 16px;
+  border: 1px solid rgba(33, 60, 90, 0.12);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 253, 0.96)),
+    radial-gradient(circle at top left, rgba(111, 180, 255, 0.08), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(255, 203, 107, 0.08), transparent 30%);
+  box-shadow:
+    0 18px 34px rgba(23, 35, 47, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 .scientific-diagram {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 16px;
 }
 
 .figure-caption {
-  margin-top: 10px;
+  margin-top: 14px;
   color: var(--muted);
   font-size: 0.97rem;
   line-height: 1.65;
 }
 
-.fig-bg {
-  fill: #ffffff;
-  stroke: rgba(34, 46, 58, 0.12);
+.fig-frame {
+  stroke: rgba(34, 46, 58, 0.1);
   stroke-width: 1.2;
 }
 
@@ -396,6 +402,7 @@ main {
 .fig-label,
 .op-text,
 .machine-text,
+.routing-text,
 .objective-text,
 .module-title,
 .group-label,
@@ -414,53 +421,182 @@ main {
   font-weight: 700;
 }
 
+.fig-panel-glass,
+.fig-panel-glass-warm,
+.chart-panel,
+.group-panel,
+.benchmark-pill,
+.framework-track,
+.framework-track-shine,
+.update-chip,
+.objective-chip,
+.priority-strip {
+  stroke-width: 1.2;
+}
+
+.fig-panel-glass {
+  fill: rgba(255, 255, 255, 0.72);
+  stroke: rgba(48, 74, 97, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.fig-panel-glass-warm {
+  fill: rgba(255, 248, 232, 0.84);
+}
+
+.job-lane {
+  fill: rgba(255, 255, 255, 0.62);
+  stroke: rgba(56, 79, 101, 0.08);
+  stroke-width: 1;
+}
+
 .op-box,
 .machine-box-svg,
 .module-box,
-.objective-box {
-  fill: #fcfcfa;
+.objective-box,
+.chart-panel {
   stroke: rgba(34, 46, 58, 0.18);
   stroke-width: 1.2;
 }
 
 .module-box-strong,
 .apdpo-box {
-  fill: rgba(33, 60, 90, 0.08);
   stroke: rgba(33, 60, 90, 0.28);
   stroke-width: 1.2;
 }
 
-.seq-line,
+.op-box-bright,
+.machine-box-emphasis,
+.module-box-rich,
+.bar-rich {
+  filter: drop-shadow(0 8px 16px rgba(34, 46, 58, 0.08));
+}
+
+.machine-box-emphasis {
+  stroke: rgba(46, 78, 110, 0.14);
+}
+
+.routing-node,
+.machine-core,
+.framework-node {
+  stroke: rgba(21, 35, 51, 0.14);
+  stroke-width: 1.1;
+}
+
+.routing-node-blue,
+.machine-core-blue,
+.framework-node-blue,
+.mini-bar-blue,
+.gantt-chip-blue {
+  fill: #7cbcff;
+}
+
+.routing-node-gold,
+.machine-core-gold,
+.framework-node-gold,
+.mini-bar-gold,
+.gantt-chip-gold {
+  fill: #ffc968;
+}
+
+.routing-node-green,
+.machine-core-green,
+.framework-node-green,
+.mini-bar-green,
+.gantt-chip-green {
+  fill: #70d6b6;
+}
+
+.framework-track {
+  fill: rgba(255, 255, 255, 0.58);
+  stroke: rgba(38, 58, 81, 0.1);
+}
+
+.framework-track-shine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.7);
+}
+
+.priority-strip {
+  fill: rgba(255, 255, 255, 0.82);
+  stroke: rgba(38, 58, 81, 0.12);
+}
+
+.objective-chip {
+  fill: rgba(255, 255, 255, 0.88);
+  stroke: rgba(44, 72, 98, 0.14);
+}
+
+.update-chip {
+  fill: rgba(255, 244, 222, 0.92);
+  stroke: rgba(175, 120, 12, 0.2);
+}
+
+.chart-panel {
+  fill: rgba(255, 255, 255, 0.64);
+}
+
+.group-panel {
+  fill: rgba(255, 255, 255, 0.5);
+  stroke: rgba(53, 78, 102, 0.08);
+}
+
+.benchmark-pill {
+  fill: rgba(255, 255, 255, 0.86);
+  stroke: rgba(53, 78, 102, 0.1);
+}
+
+.job-link,
+.assignment-arc,
+.framework-link,
 .module-line,
 .axis-line,
-.assign-line,
 .feedback-line,
 .grid-line {
   fill: none;
   stroke-linecap: round;
 }
 
-.seq-line,
+.job-link,
 .module-line,
-.axis-line {
-  stroke: #314250;
-  stroke-width: 1.5;
+.axis-line,
+.framework-link {
+  stroke: #40586d;
+  stroke-width: 1.6;
 }
 
-.assign-line,
+.module-line-rich,
+.axis-line-soft {
+  stroke: rgba(64, 88, 109, 0.74);
+}
+
+.assignment-arc,
 .feedback-line {
-  stroke: #7e8b97;
-  stroke-width: 1.4;
-  stroke-dasharray: 4 5;
+  stroke: rgba(98, 120, 141, 0.82);
+  stroke-width: 2.1;
+  stroke-dasharray: 5 6;
+}
+
+.assignment-arc-alt {
+  stroke: rgba(109, 210, 182, 0.9);
+}
+
+.assignment-arc-gold {
+  stroke: rgba(255, 194, 83, 0.92);
+}
+
+.assignment-arc-cool {
+  stroke: rgba(116, 183, 255, 0.92);
+}
+
+.feedback-line-rich {
+  stroke: rgba(69, 96, 124, 0.78);
+  stroke-dasharray: 7 7;
 }
 
 .grid-line {
   stroke: rgba(34, 46, 58, 0.12);
   stroke-width: 1;
-}
-
-.feedback-arrow {
-  fill: #7e8b97;
 }
 
 .bar-base {
