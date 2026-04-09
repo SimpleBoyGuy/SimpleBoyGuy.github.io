@@ -66,6 +66,10 @@ h1 {
   max-width: 14ch;
 }
 
+.project-page .subpage-hero h1 {
+  max-width: 20ch;
+}
+
 h2 {
   font-size: clamp(1.55rem, 2.8vw, 1.95rem);
   margin-bottom: 14px;
