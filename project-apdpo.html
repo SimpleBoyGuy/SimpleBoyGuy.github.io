@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Spectral:wght@400;600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css?v=20260409d">
+  <link rel="stylesheet" href="styles.css?v=20260409e">
 </head>
 <body class="project-page">
   <div class="page-shell">
@@ -62,128 +62,14 @@
               with the objective of minimizing the makespan.
             </p>
             <figure class="paper-figure">
-              <svg class="scientific-diagram" viewBox="0 0 960 360" role="img" aria-label="FJSP formulation diagram">
-                <defs>
-                  <linearGradient id="fjsp-surface" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff" />
-                    <stop offset="100%" stop-color="#f5f8fc" />
-                  </linearGradient>
-                  <radialGradient id="fjsp-orb-a" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#6fb4ff" stop-opacity="0.38" />
-                    <stop offset="100%" stop-color="#6fb4ff" stop-opacity="0" />
-                  </radialGradient>
-                  <radialGradient id="fjsp-orb-b" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ffcb6b" stop-opacity="0.28" />
-                    <stop offset="100%" stop-color="#ffcb6b" stop-opacity="0" />
-                  </radialGradient>
-                  <radialGradient id="fjsp-orb-c" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#70d6b6" stop-opacity="0.28" />
-                    <stop offset="100%" stop-color="#70d6b6" stop-opacity="0" />
-                  </radialGradient>
-                  <linearGradient id="job-grad-a" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#f8fbff" />
-                    <stop offset="100%" stop-color="#dcecff" />
-                  </linearGradient>
-                  <linearGradient id="job-grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#fff8ea" />
-                    <stop offset="100%" stop-color="#ffe0a6" />
-                  </linearGradient>
-                  <linearGradient id="job-grad-c" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#f4fffb" />
-                    <stop offset="100%" stop-color="#cdeee4" />
-                  </linearGradient>
-                  <linearGradient id="machine-grad-a" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#f7f9fd" />
-                    <stop offset="100%" stop-color="#d8e4f2" />
-                  </linearGradient>
-                  <filter id="fig-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#23313f" flood-opacity="0.12" />
-                  </filter>
-                  <marker id="fjsp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                    <path d="M0,0 L10,5 L0,10 z" fill="#51697e" />
-                  </marker>
-                </defs>
-
-                <rect x="20" y="20" width="920" height="320" rx="22" fill="url(#fjsp-surface)" class="fig-frame" />
-                <circle cx="140" cy="98" r="96" fill="url(#fjsp-orb-a)" />
-                <circle cx="506" cy="276" r="92" fill="url(#fjsp-orb-b)" />
-                <circle cx="824" cy="112" r="108" fill="url(#fjsp-orb-c)" />
-
-                <g filter="url(#fig-shadow)">
-                  <rect x="46" y="70" width="412" height="218" rx="24" class="fig-panel-glass" />
-                  <rect x="486" y="70" width="166" height="218" rx="24" class="fig-panel-glass fig-panel-glass-warm" />
-                  <rect x="680" y="70" width="234" height="218" rx="24" class="fig-panel-glass" />
-                </g>
-
-                <text x="62" y="54" class="fig-title">Operation precedence</text>
-                <text x="514" y="54" class="fig-title">Routing space</text>
-                <text x="700" y="54" class="fig-title">Machine pool</text>
-
-                <rect x="74" y="95" width="352" height="42" rx="21" class="job-lane" />
-                <rect x="74" y="163" width="312" height="42" rx="21" class="job-lane" />
-                <rect x="74" y="231" width="352" height="42" rx="21" class="job-lane" />
-
-                <text x="74" y="87" class="fig-label">Job J1</text>
-                <text x="74" y="155" class="fig-label">Job J2</text>
-                <text x="74" y="223" class="fig-label">Job J3</text>
-
-                <rect x="108" y="99" width="82" height="34" rx="12" fill="url(#job-grad-a)" class="op-box op-box-bright" />
-                <rect x="214" y="99" width="82" height="34" rx="12" fill="url(#job-grad-b)" class="op-box op-box-bright" />
-                <rect x="320" y="99" width="82" height="34" rx="12" fill="url(#job-grad-c)" class="op-box op-box-bright" />
-                <text x="134" y="120" class="op-text">O1,1</text>
-                <text x="240" y="120" class="op-text">O1,2</text>
-                <text x="346" y="120" class="op-text">O1,3</text>
-
-                <rect x="108" y="167" width="82" height="34" rx="12" fill="url(#job-grad-b)" class="op-box op-box-bright" />
-                <rect x="214" y="167" width="82" height="34" rx="12" fill="url(#job-grad-c)" class="op-box op-box-bright" />
-                <text x="134" y="188" class="op-text">O2,1</text>
-                <text x="240" y="188" class="op-text">O2,2</text>
-
-                <rect x="108" y="235" width="82" height="34" rx="12" fill="url(#job-grad-c)" class="op-box op-box-bright" />
-                <rect x="214" y="235" width="82" height="34" rx="12" fill="url(#job-grad-a)" class="op-box op-box-bright" />
-                <rect x="320" y="235" width="82" height="34" rx="12" fill="url(#job-grad-b)" class="op-box op-box-bright" />
-                <text x="134" y="256" class="op-text">O3,1</text>
-                <text x="240" y="256" class="op-text">O3,2</text>
-                <text x="346" y="256" class="op-text">O3,3</text>
-
-                <line x1="190" y1="116" x2="214" y2="116" class="job-link" marker-end="url(#fjsp-arrow)" />
-                <line x1="296" y1="116" x2="320" y2="116" class="job-link" marker-end="url(#fjsp-arrow)" />
-                <line x1="190" y1="184" x2="214" y2="184" class="job-link" marker-end="url(#fjsp-arrow)" />
-                <line x1="190" y1="252" x2="214" y2="252" class="job-link" marker-end="url(#fjsp-arrow)" />
-                <line x1="296" y1="252" x2="320" y2="252" class="job-link" marker-end="url(#fjsp-arrow)" />
-
-                <path d="M420 116 C470 116, 500 98, 534 110" class="assignment-arc" />
-                <path d="M420 116 C470 116, 500 154, 534 166" class="assignment-arc assignment-arc-alt" />
-                <path d="M296 184 C434 176, 454 168, 534 166" class="assignment-arc assignment-arc-gold" />
-                <path d="M296 184 C430 184, 466 236, 534 222" class="assignment-arc assignment-arc-alt" />
-                <path d="M402 252 C472 230, 490 112, 534 110" class="assignment-arc assignment-arc-cool" />
-                <path d="M402 252 C468 252, 494 230, 534 222" class="assignment-arc assignment-arc-gold" />
-
-                <circle cx="558" cy="110" r="22" class="routing-node routing-node-blue" />
-                <circle cx="558" cy="166" r="22" class="routing-node routing-node-gold" />
-                <circle cx="558" cy="222" r="22" class="routing-node routing-node-green" />
-                <text x="547" y="115" class="routing-text">M1</text>
-                <text x="547" y="171" class="routing-text">M2</text>
-                <text x="547" y="227" class="routing-text">M3</text>
-
-                <g filter="url(#fig-shadow)">
-                  <rect x="716" y="96" width="162" height="38" rx="14" fill="url(#machine-grad-a)" class="machine-box-svg machine-box-emphasis" />
-                  <rect x="716" y="160" width="162" height="38" rx="14" fill="url(#machine-grad-a)" class="machine-box-svg machine-box-emphasis" />
-                  <rect x="716" y="224" width="162" height="38" rx="14" fill="url(#machine-grad-a)" class="machine-box-svg machine-box-emphasis" />
-                </g>
-                <circle cx="744" cy="115" r="12" class="machine-core machine-core-blue" />
-                <circle cx="744" cy="179" r="12" class="machine-core machine-core-gold" />
-                <circle cx="744" cy="243" r="12" class="machine-core machine-core-green" />
-                <text x="768" y="120" class="machine-text">M1  parallel capability</text>
-                <text x="768" y="184" class="machine-text">M2  routing flexibility</text>
-                <text x="768" y="248" class="machine-text">M3  processing resource</text>
-
-                <rect x="334" y="298" width="294" height="28" rx="14" class="objective-chip" />
-                <text x="392" y="317" class="objective-text">Objective: minimize makespan Cmax</text>
-              </svg>
+              <img
+                src="assets/FJSP.png"
+                alt="Flexible job shop scheduling problem illustration"
+                class="figure-image figure-image-problem"
+              >
               <figcaption class="figure-caption">
-                <strong>Figure 1.</strong> Flexible job shop scheduling requires jointly modeling operation precedence
-                and machine assignment under multiple eligible-machine choices.
+                <strong>Figure 1.</strong> Problem structure of FJSP, including job precedence, alternative machine
+                assignment, feasibility constraints, and the makespan minimization objective.
               </figcaption>
             </figure>
           </section>
@@ -312,101 +198,14 @@
               that the solver outperforms existing RL baselines and moves closer to OR-Tools.
             </p>
             <figure class="paper-figure">
-              <svg class="scientific-diagram" viewBox="0 0 960 360" role="img" aria-label="Benchmark comparison chart">
-                <defs>
-                  <radialGradient id="result-orb-a" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#6fb4ff" stop-opacity="0.34" />
-                    <stop offset="100%" stop-color="#6fb4ff" stop-opacity="0" />
-                  </radialGradient>
-                  <radialGradient id="result-orb-b" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ffcb6b" stop-opacity="0.26" />
-                    <stop offset="100%" stop-color="#ffcb6b" stop-opacity="0" />
-                  </radialGradient>
-                  <radialGradient id="result-orb-c" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#70d6b6" stop-opacity="0.24" />
-                    <stop offset="100%" stop-color="#70d6b6" stop-opacity="0" />
-                  </radialGradient>
-                  <linearGradient id="result-surface" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff" />
-                    <stop offset="100%" stop-color="#f6f9fc" />
-                  </linearGradient>
-                  <linearGradient id="bar-base-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#b8c0ca" />
-                    <stop offset="100%" stop-color="#8c99a6" />
-                  </linearGradient>
-                  <linearGradient id="bar-solver-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#7bc0ff" />
-                    <stop offset="100%" stop-color="#2d69a3" />
-                  </linearGradient>
-                  <linearGradient id="bar-or-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#4fe0ba" />
-                    <stop offset="100%" stop-color="#23886f" />
-                  </linearGradient>
-                </defs>
-
-                <rect x="20" y="20" width="920" height="320" rx="22" fill="url(#result-surface)" class="fig-frame" />
-                <circle cx="824" cy="82" r="90" fill="url(#result-orb-a)" />
-                <circle cx="694" cy="258" r="84" fill="url(#result-orb-c)" />
-                <circle cx="184" cy="110" r="92" fill="url(#result-orb-b)" />
-
-                <text x="62" y="58" class="fig-title">Normalized makespan ratio</text>
-                <text x="62" y="82" class="axis-note">Lower values indicate stronger scheduling performance.</text>
-
-                <rect x="88" y="96" width="798" height="196" rx="24" class="chart-panel" />
-                <line x1="116" y1="264" x2="860" y2="264" class="axis-line axis-line-soft" />
-                <line x1="116" y1="110" x2="116" y2="264" class="axis-line axis-line-soft" />
-
-                <line x1="116" y1="114" x2="860" y2="114" class="grid-line" />
-                <line x1="116" y1="152" x2="860" y2="152" class="grid-line" />
-                <line x1="116" y1="190" x2="860" y2="190" class="grid-line" />
-                <line x1="116" y1="228" x2="860" y2="228" class="grid-line" />
-
-                <text x="80" y="269" class="axis-label">0.80</text>
-                <text x="80" y="233" class="axis-label">0.85</text>
-                <text x="80" y="195" class="axis-label">0.90</text>
-                <text x="80" y="157" class="axis-label">0.95</text>
-                <text x="80" y="119" class="axis-label">1.00</text>
-
-                <rect x="146" y="126" width="126" height="126" rx="18" class="group-panel" />
-                <rect x="324" y="126" width="126" height="126" rx="18" class="group-panel" />
-                <rect x="502" y="126" width="126" height="126" rx="18" class="group-panel" />
-                <rect x="680" y="126" width="126" height="126" rx="18" class="group-panel" />
-
-                <rect x="172" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
-                <rect x="204" y="124" width="24" height="140" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
-                <rect x="236" y="130" width="24" height="134" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
-
-                <rect x="350" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
-                <rect x="382" y="164" width="24" height="100" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
-                <rect x="414" y="176" width="24" height="88" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
-
-                <rect x="528" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
-                <rect x="560" y="190" width="24" height="74" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
-                <rect x="592" y="210" width="24" height="54" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
-
-                <rect x="706" y="114" width="24" height="150" rx="12" fill="url(#bar-base-grad)" class="bar-base bar-rich" />
-                <rect x="738" y="129" width="24" height="135" rx="12" fill="url(#bar-solver-grad)" class="bar-solver bar-rich" />
-                <rect x="770" y="134" width="24" height="130" rx="12" fill="url(#bar-or-grad)" class="bar-or bar-rich" />
-
-                <rect x="170" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
-                <rect x="348" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
-                <rect x="526" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
-                <rect x="704" y="278" width="94" height="24" rx="12" class="benchmark-pill" />
-                <text x="204" y="294" class="group-label">mk</text>
-                <text x="375" y="294" class="group-label">la(r)</text>
-                <text x="554" y="294" class="group-label">la(e)</text>
-                <text x="732" y="294" class="group-label">la(v)</text>
-
-                <rect x="612" y="54" width="18" height="18" rx="5" fill="url(#bar-base-grad)" class="bar-base" />
-                <text x="638" y="67" class="legend-label">Best RL baseline</text>
-                <rect x="768" y="54" width="18" height="18" rx="5" fill="url(#bar-solver-grad)" class="bar-solver" />
-                <text x="794" y="67" class="legend-label">RL Solver</text>
-                <rect x="612" y="79" width="18" height="18" rx="5" fill="url(#bar-or-grad)" class="bar-or" />
-                <text x="638" y="92" class="legend-label">OR-Tools</text>
-              </svg>
+              <img
+                src="assets/benchmark-comparison.png"
+                alt="Benchmark comparison plot generated from the CDC 2025 results"
+                class="figure-image figure-image-results"
+              >
               <figcaption class="figure-caption">
-                <strong>Figure 3.</strong> Normalized performance view of representative benchmark groups. The RL solver
-                consistently improves upon the best RL baseline and remains closer to OR-Tools.
+                <strong>Figure 3.</strong> Benchmark summary generated in Python from the reported makespan values.
+                The RL solver consistently improves upon the best RL baseline and narrows the gap to OR-Tools.
               </figcaption>
             </figure>
 

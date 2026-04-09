@@ -380,6 +380,24 @@ main {
   border-radius: 16px;
 }
 
+.figure-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.figure-image-problem {
+  border: 1px solid rgba(33, 60, 90, 0.08);
+  box-shadow: 0 14px 30px rgba(25, 40, 53, 0.08);
+}
+
+.figure-image-results {
+  border: 1px solid rgba(33, 60, 90, 0.08);
+  box-shadow: 0 14px 30px rgba(25, 40, 53, 0.08);
+}
+
 .figure-caption {
   margin-top: 14px;
   color: var(--muted);
