@@ -398,6 +398,11 @@ main {
   box-shadow: 0 14px 30px rgba(25, 40, 53, 0.08);
 }
 
+.figure-image-framework {
+  border: 1px solid rgba(33, 60, 90, 0.08);
+  box-shadow: 0 14px 30px rgba(25, 40, 53, 0.08);
+}
+
 .figure-caption {
   margin-top: 14px;
   color: var(--muted);
