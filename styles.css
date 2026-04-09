@@ -335,175 +335,123 @@ main {
   color: var(--accent);
 }
 
-.fjsp-visual {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) 180px minmax(0, 0.8fr);
-  gap: 18px;
-  align-items: center;
-  margin-top: 20px;
+.paper-figure {
+  margin: 20px 0 0;
 }
 
-.visual-column {
-  display: grid;
-  gap: 12px;
+.scientific-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.visual-title {
-  margin: 0;
-  color: var(--accent);
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-}
-
-.job-box,
-.machine-box,
-.objective-chip,
-.solver-card,
-.focus-card {
-  border: 1px solid rgba(62, 73, 61, 0.1);
-  background: rgba(255, 252, 246, 0.78);
-}
-
-.job-box {
-  padding: 14px;
-  border-radius: 18px;
-}
-
-.job-label {
-  display: inline-block;
-  margin-bottom: 10px;
-  color: var(--accent);
-  font-weight: 800;
-}
-
-.ops-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.op-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(65, 92, 72, 0.1);
-  color: var(--accent);
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.visual-center {
-  display: grid;
-  gap: 14px;
-  justify-items: center;
-}
-
-.objective-chip {
-  padding: 12px 14px;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: 700;
-}
-
-.objective-chip-soft {
-  color: var(--accent);
-}
-
-.visual-divider {
-  width: 2px;
-  height: 34px;
-  background: rgba(65, 92, 72, 0.18);
-}
-
-.machine-box {
-  padding: 16px 14px;
-  border-radius: 18px;
-  text-align: center;
-  font-weight: 700;
-}
-
-.solver-grid,
-.focus-grid {
-  display: grid;
-  gap: 14px;
-  margin-top: 20px;
-}
-
-.solver-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.focus-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.solver-card,
-.focus-card {
-  padding: 18px 16px;
-  border-radius: 18px;
-}
-
-.solver-card h3,
-.focus-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.04rem;
-  font-family: "Manrope", "Segoe UI", sans-serif;
-}
-
-.solver-card p,
-.focus-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.62;
-}
-
-.solver-step {
-  margin: 0 0 12px;
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.decision-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin: 18px 0;
-}
-
-.decision-card {
-  padding: 16px;
-  border-radius: 18px;
-  border: 1px solid rgba(62, 73, 61, 0.1);
-  background: rgba(255, 252, 246, 0.78);
-}
-
-.decision-card p {
-  margin: 0;
-}
-
-.decision-card p + p {
+.figure-caption {
   margin-top: 10px;
-}
-
-.decision-label {
-  color: var(--accent);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
-.decision-score {
   color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+
+.fig-bg {
+  fill: rgba(255, 252, 246, 0.82);
+  stroke: rgba(62, 73, 61, 0.12);
+  stroke-width: 1.2;
+}
+
+.fig-title {
+  fill: #415c48;
+  font-size: 15px;
   font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fig-label,
+.op-text,
+.machine-text,
+.objective-text,
+.module-title,
+.group-label,
+.legend-label,
+.axis-label,
+.axis-note,
+.module-sub,
+.apdpo-text {
+  fill: #1d241f;
+  font-size: 13px;
+}
+
+.fig-label,
+.module-title,
+.group-label {
+  font-weight: 700;
+}
+
+.op-box,
+.machine-box-svg,
+.module-box,
+.module-box-strong,
+.objective-box,
+.apdpo-box {
+  stroke-width: 1.2;
+}
+
+.op-box,
+.machine-box-svg,
+.module-box,
+.objective-box {
+  fill: rgba(255, 252, 246, 0.9);
+  stroke: rgba(62, 73, 61, 0.14);
+}
+
+.module-box-strong,
+.apdpo-box {
+  fill: rgba(65, 92, 72, 0.08);
+  stroke: rgba(65, 92, 72, 0.28);
+}
+
+.seq-line,
+.assign-line,
+.module-line,
+.axis-line,
+.grid-line,
+.feedback-line {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.seq-line,
+.module-line,
+.axis-line {
+  stroke: #3f4e43;
+  stroke-width: 1.5;
+}
+
+.assign-line,
+.feedback-line {
+  stroke: #7d897f;
+  stroke-width: 1.4;
+  stroke-dasharray: 4 5;
+}
+
+.grid-line {
+  stroke: rgba(62, 73, 61, 0.12);
+  stroke-width: 1;
+}
+
+.feedback-arrow {
+  fill: #7d897f;
+}
+
+.bar-base {
+  fill: rgba(96, 109, 98, 0.35);
+}
+
+.bar-solver {
+  fill: #5d7b63;
+}
+
+.bar-or {
+  fill: rgba(26, 31, 27, 0.72);
 }
 
 .table-wrap {
@@ -644,13 +592,6 @@ main {
 
   .portrait-frame {
     width: min(100%, 152px);
-  }
-
-  .fjsp-visual,
-  .solver-grid,
-  .focus-grid,
-  .decision-grid {
-    grid-template-columns: 1fr;
   }
 
   .footer {

@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css?v=20260409a">
+  <link rel="stylesheet" href="styles.css?v=20260409b">
 </head>
 <body class="project-page">
   <div class="page-shell">
@@ -32,7 +32,7 @@
           <p class="eyebrow">On This Page</p>
           <nav class="sidebar-links sidebar-links-secondary">
             <a href="#problem">Problem</a>
-            <a href="#solver">Solver</a>
+            <a href="#framework">Framework</a>
             <a href="#results">Results</a>
             <a href="#papers">Papers</a>
           </nav>
@@ -47,7 +47,7 @@
             Reinforcement Learning for the Flexible Job Shop Scheduling Problem
           </p>
           <p class="intro">
-            A reinforcement learning solver for flexible job shop scheduling, designed to balance
+            A reinforcement learning solver for flexible job shop scheduling, aimed at improving
             <strong>solution quality</strong>, <strong>decision transparency</strong>, and
             <strong>computational efficiency</strong>.
           </p>
@@ -55,109 +55,184 @@
 
         <main class="content-flow">
           <section class="content-section" id="problem">
-            <h2>Problem at a Glance</h2>
+            <h2>Problem Formulation</h2>
             <p>
-              In the Flexible Job Shop Scheduling Problem, each job contains an ordered sequence of operations, and
-              each operation may be processed by multiple eligible machines. The solver must decide both operation
-              sequencing and machine assignment, with the objective of minimizing the makespan.
+              In FJSP, each job contains an ordered sequence of operations, and each operation may be processed by
+              multiple eligible machines. The solver must jointly decide operation sequencing and machine assignment,
+              with the objective of minimizing the makespan.
             </p>
+            <figure class="paper-figure">
+              <svg class="scientific-diagram" viewBox="0 0 960 360" role="img" aria-label="FJSP formulation diagram">
+                <rect x="20" y="20" width="920" height="320" rx="18" class="fig-bg" />
 
-            <div class="fjsp-visual">
-              <div class="visual-column">
-                <p class="visual-title">Jobs</p>
-                <div class="job-box">
-                  <span class="job-label">J1</span>
-                  <div class="ops-row">
-                    <span class="op-chip">O1,1</span>
-                    <span class="op-chip">O1,2</span>
-                    <span class="op-chip">O1,3</span>
-                  </div>
-                </div>
-                <div class="job-box">
-                  <span class="job-label">J2</span>
-                  <div class="ops-row">
-                    <span class="op-chip">O2,1</span>
-                    <span class="op-chip">O2,2</span>
-                  </div>
-                </div>
-                <div class="job-box">
-                  <span class="job-label">J3</span>
-                  <div class="ops-row">
-                    <span class="op-chip">O3,1</span>
-                    <span class="op-chip">O3,2</span>
-                    <span class="op-chip">O3,3</span>
-                  </div>
-                </div>
-              </div>
+                <text x="56" y="56" class="fig-title">Jobs and precedence structure</text>
+                <text x="640" y="56" class="fig-title">Machines</text>
+                <text x="430" y="56" class="fig-title">Eligible assignments</text>
 
-              <div class="visual-center">
-                <div class="objective-chip">Sequence + Assignment</div>
-                <div class="visual-divider"></div>
-                <div class="objective-chip objective-chip-soft">Minimize Makespan</div>
-              </div>
+                <text x="58" y="104" class="fig-label">J1</text>
+                <rect x="100" y="82" width="90" height="34" rx="10" class="op-box" />
+                <rect x="220" y="82" width="90" height="34" rx="10" class="op-box" />
+                <rect x="340" y="82" width="90" height="34" rx="10" class="op-box" />
+                <text x="128" y="104" class="op-text">O1,1</text>
+                <text x="248" y="104" class="op-text">O1,2</text>
+                <text x="368" y="104" class="op-text">O1,3</text>
+                <line x1="190" y1="99" x2="220" y2="99" class="seq-line" />
+                <line x1="310" y1="99" x2="340" y2="99" class="seq-line" />
 
-              <div class="visual-column">
-                <p class="visual-title">Machines</p>
-                <div class="machine-box">M1</div>
-                <div class="machine-box">M2</div>
-                <div class="machine-box">M3</div>
-              </div>
-            </div>
+                <text x="58" y="172" class="fig-label">J2</text>
+                <rect x="100" y="150" width="90" height="34" rx="10" class="op-box" />
+                <rect x="220" y="150" width="90" height="34" rx="10" class="op-box" />
+                <text x="128" y="172" class="op-text">O2,1</text>
+                <text x="248" y="172" class="op-text">O2,2</text>
+                <line x1="190" y1="167" x2="220" y2="167" class="seq-line" />
+
+                <text x="58" y="240" class="fig-label">J3</text>
+                <rect x="100" y="218" width="90" height="34" rx="10" class="op-box" />
+                <rect x="220" y="218" width="90" height="34" rx="10" class="op-box" />
+                <rect x="340" y="218" width="90" height="34" rx="10" class="op-box" />
+                <text x="128" y="240" class="op-text">O3,1</text>
+                <text x="248" y="240" class="op-text">O3,2</text>
+                <text x="368" y="240" class="op-text">O3,3</text>
+                <line x1="190" y1="235" x2="220" y2="235" class="seq-line" />
+                <line x1="310" y1="235" x2="340" y2="235" class="seq-line" />
+
+                <rect x="702" y="86" width="120" height="42" rx="12" class="machine-box-svg" />
+                <rect x="702" y="154" width="120" height="42" rx="12" class="machine-box-svg" />
+                <rect x="702" y="222" width="120" height="42" rx="12" class="machine-box-svg" />
+                <text x="748" y="112" class="machine-text">M1</text>
+                <text x="748" y="180" class="machine-text">M2</text>
+                <text x="748" y="248" class="machine-text">M3</text>
+
+                <line x1="430" y1="99" x2="702" y2="107" class="assign-line" />
+                <line x1="430" y1="99" x2="702" y2="175" class="assign-line" />
+                <line x1="310" y1="167" x2="702" y2="175" class="assign-line" />
+                <line x1="310" y1="167" x2="702" y2="243" class="assign-line" />
+                <line x1="430" y1="235" x2="702" y2="107" class="assign-line" />
+                <line x1="430" y1="235" x2="702" y2="243" class="assign-line" />
+
+                <rect x="350" y="286" width="260" height="34" rx="10" class="objective-box" />
+                <text x="408" y="307" class="objective-text">Objective: minimize makespan Cmax</text>
+              </svg>
+              <figcaption class="figure-caption">
+                <strong>Figure 1.</strong> Flexible job shop scheduling requires jointly modeling operation precedence
+                and machine assignment under multiple eligible-machine choices.
+              </figcaption>
+            </figure>
           </section>
 
-          <section class="content-section" id="solver">
-            <h2>Solver Design</h2>
+          <section class="content-section" id="framework">
+            <h2>RL Solver Framework</h2>
             <p>
               The current solver uses a problem-specific RL formulation together with an action-priority policy
-              design. In the current paper, <strong>APDPO</strong> is one key policy optimization component inside
-              this broader RL solver pipeline.
+              design. In the current paper, APDPO serves as one policy optimization module within this broader solver.
             </p>
+            <figure class="paper-figure">
+              <svg class="scientific-diagram" viewBox="0 0 960 290" role="img" aria-label="RL solver framework diagram">
+                <rect x="20" y="20" width="920" height="250" rx="18" class="fig-bg" />
 
-            <div class="solver-grid">
-              <article class="solver-card">
-                <p class="solver-step">01</p>
-                <h3>State Encoding</h3>
-                <p>Represent job progress, machine availability, active work, and system time as the decision state.</p>
-              </article>
-              <article class="solver-card">
-                <p class="solver-step">02</p>
-                <h3>Action Priorities</h3>
-                <p>Assign each feasible machine-operation action a priority value to define the scheduling policy.</p>
-              </article>
-              <article class="solver-card">
-                <p class="solver-step">03</p>
-                <h3>Trajectory Rollout</h3>
-                <p>Generate scheduling trajectories, evaluate returns, and compare decisions using makespan-driven rewards.</p>
-              </article>
-              <article class="solver-card">
-                <p class="solver-step">04</p>
-                <h3>Direct Update</h3>
-                <p>Promote effective actions and suppress competing ones through a direct gradient-free update rule.</p>
-              </article>
-            </div>
+                <rect x="48" y="104" width="128" height="54" rx="12" class="module-box" />
+                <text x="80" y="126" class="module-title">FJSP</text>
+                <text x="74" y="146" class="module-sub">instance</text>
 
-            <div class="focus-grid">
-              <article class="focus-card">
-                <h3>Quality</h3>
-                <p>Move RL solutions closer to strong optimization baselines on standard FJSP benchmarks.</p>
-              </article>
-              <article class="focus-card">
-                <h3>Transparency</h3>
-                <p>Use action priorities to make policy behavior easier to interpret than purely opaque decision rules.</p>
-              </article>
-              <article class="focus-card">
-                <h3>Efficiency</h3>
-                <p>Reduce update complexity through direct policy modification rather than relying only on gradient-based learning.</p>
-              </article>
-            </div>
+                <rect x="222" y="88" width="150" height="86" rx="12" class="module-box" />
+                <text x="258" y="116" class="module-title">MDP state</text>
+                <text x="248" y="138" class="module-sub">job progress</text>
+                <text x="244" y="156" class="module-sub">machine status</text>
+
+                <rect x="420" y="88" width="150" height="86" rx="12" class="module-box" />
+                <text x="450" y="116" class="module-title">Feasible</text>
+                <text x="446" y="138" class="module-title">actions A(s)</text>
+                <text x="455" y="160" class="module-sub">machine-operation pairs</text>
+
+                <rect x="618" y="78" width="150" height="106" rx="12" class="module-box-strong" />
+                <text x="651" y="108" class="module-title">Action-priority</text>
+                <text x="685" y="130" class="module-title">vector Φ</text>
+                <text x="666" y="156" class="module-sub">policy representation</text>
+
+                <rect x="804" y="88" width="104" height="86" rx="12" class="module-box" />
+                <text x="828" y="116" class="module-title">Rollout</text>
+                <text x="821" y="138" class="module-sub">return G(τ)</text>
+                <text x="824" y="160" class="module-sub">value V(s)</text>
+
+                <line x1="176" y1="131" x2="222" y2="131" class="module-line" />
+                <line x1="372" y1="131" x2="420" y2="131" class="module-line" />
+                <line x1="570" y1="131" x2="618" y2="131" class="module-line" />
+                <line x1="768" y1="131" x2="804" y2="131" class="module-line" />
+
+                <path d="M856 174 C856 226, 690 226, 690 184" class="feedback-line" />
+                <polygon points="686,188 690,176 695,188" class="feedback-arrow" />
+
+                <rect x="590" y="206" width="198" height="40" rx="10" class="apdpo-box" />
+                <text x="628" y="230" class="apdpo-text">APDPO direct priority update</text>
+              </svg>
+              <figcaption class="figure-caption">
+                <strong>Figure 2.</strong> Schematic overview of the RL solver. The current CDC 2025 paper studies
+                APDPO as a direct policy update mechanism for the action-priority representation.
+              </figcaption>
+            </figure>
           </section>
 
           <section class="content-section" id="results">
-            <h2>Results</h2>
+            <h2>Experimental Snapshot</h2>
             <p>
               On representative benchmark groups from the Brandimarte and Hurink families, the reported results show
               that the solver outperforms existing RL baselines and moves closer to OR-Tools.
             </p>
+            <figure class="paper-figure">
+              <svg class="scientific-diagram" viewBox="0 0 960 360" role="img" aria-label="Benchmark comparison chart">
+                <rect x="20" y="20" width="920" height="320" rx="18" class="fig-bg" />
+
+                <text x="60" y="58" class="fig-title">Normalized makespan ratio (lower is better)</text>
+                <text x="62" y="84" class="axis-note">Baseline RL = 1.00 for each benchmark group</text>
+
+                <line x1="84" y1="292" x2="900" y2="292" class="axis-line" />
+                <line x1="84" y1="90" x2="84" y2="292" class="axis-line" />
+
+                <line x1="84" y1="100" x2="900" y2="100" class="grid-line" />
+                <line x1="84" y1="146" x2="900" y2="146" class="grid-line" />
+                <line x1="84" y1="192" x2="900" y2="192" class="grid-line" />
+                <line x1="84" y1="238" x2="900" y2="238" class="grid-line" />
+
+                <text x="52" y="297" class="axis-label">0.80</text>
+                <text x="52" y="243" class="axis-label">0.85</text>
+                <text x="52" y="197" class="axis-label">0.90</text>
+                <text x="52" y="151" class="axis-label">0.95</text>
+                <text x="52" y="105" class="axis-label">1.00</text>
+
+                <rect x="150" y="100" width="22" height="192" class="bar-base" />
+                <rect x="178" y="113" width="22" height="179" class="bar-solver" />
+                <rect x="206" y="120" width="22" height="172" class="bar-or" />
+
+                <rect x="330" y="100" width="22" height="192" class="bar-base" />
+                <rect x="358" y="164" width="22" height="128" class="bar-solver" />
+                <rect x="386" y="180" width="22" height="112" class="bar-or" />
+
+                <rect x="510" y="100" width="22" height="192" class="bar-base" />
+                <rect x="538" y="198" width="22" height="94" class="bar-solver" />
+                <rect x="566" y="222" width="22" height="70" class="bar-or" />
+
+                <rect x="690" y="100" width="22" height="192" class="bar-base" />
+                <rect x="718" y="119" width="22" height="173" class="bar-solver" />
+                <rect x="746" y="125" width="22" height="167" class="bar-or" />
+
+                <text x="148" y="316" class="group-label">mk</text>
+                <text x="312" y="316" class="group-label">la(r)</text>
+                <text x="492" y="316" class="group-label">la(e)</text>
+                <text x="672" y="316" class="group-label">la(v)</text>
+
+                <rect x="646" y="52" width="16" height="16" class="bar-base" />
+                <text x="670" y="64" class="legend-label">Best RL baseline</text>
+                <rect x="778" y="52" width="16" height="16" class="bar-solver" />
+                <text x="802" y="64" class="legend-label">RL Solver</text>
+                <rect x="646" y="74" width="16" height="16" class="bar-or" />
+                <text x="670" y="86" class="legend-label">OR-Tools</text>
+              </svg>
+              <figcaption class="figure-caption">
+                <strong>Figure 3.</strong> Normalized performance view of representative benchmark groups. The RL solver
+                consistently improves upon the best RL baseline and remains closer to OR-Tools.
+              </figcaption>
+            </figure>
+
             <p class="table-caption">
               <strong>Table 1.</strong> Average makespan comparison summarized from Table I of the CDC 2025 paper.
             </p>
@@ -199,9 +274,6 @@
                 </tbody>
               </table>
             </div>
-            <p class="benchmark-note">
-              Reported values are average makespan results summarized from the published benchmark table.
-            </p>
           </section>
 
           <section class="content-section" id="papers">
