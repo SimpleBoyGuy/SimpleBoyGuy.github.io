@@ -68,8 +68,8 @@
                 class="figure-image figure-image-problem"
               >
               <figcaption class="figure-caption">
-                <strong>Figure 1.</strong> Problem structure of FJSP, including job precedence, alternative machine
-                assignment, feasibility constraints, and the makespan minimization objective.
+                <strong>Figure 1.</strong> Problem formulation of FJSP, showing job precedence constraints,
+                alternative machine eligibility, feasibility constraints, and the makespan minimization objective.
               </figcaption>
             </figure>
           </section>
@@ -87,8 +87,9 @@
                 class="figure-image figure-image-framework"
               >
               <figcaption class="figure-caption">
-                <strong>Figure 2.</strong> Schematic overview of the RL solver. The current CDC 2025 paper studies
-                APDPO as a direct policy update mechanism for the action-priority representation.
+                <strong>Figure 2.</strong> Overall framework of the RL solver for FJSP. The solver encodes the
+                scheduling state, evaluates feasible actions through an action-priority policy, and improves the policy
+                from rollout-based schedule evaluation; APDPO is used here as a direct priority update mechanism.
               </figcaption>
             </figure>
           </section>
@@ -106,8 +107,9 @@
                 class="figure-image figure-image-results"
               >
               <figcaption class="figure-caption">
-                <strong>Figure 3.</strong> Benchmark summary generated in Python from the reported makespan values.
-                The RL solver consistently improves upon the best RL baseline and narrows the gap to OR-Tools.
+                <strong>Figure 3.</strong> Experimental comparison on representative benchmark families. The RL solver
+                consistently improves upon the best RL baseline and reduces the performance gap to OR-Tools in terms of
+                makespan.
               </figcaption>
             </figure>
 
