@@ -6,9 +6,11 @@ Repository: [SimpleBoyGuy/SimpleBoyGuy.github.io](https://github.com/SimpleBoyGu
 
 ## Files
 
-- `index.html`: biography, research, publications, experience, and contact information.
+- `index.html`: concise homepage with biography, research highlights, and links to detailed pages.
+- `publications.html`: selected publications and conference talks.
+- `experience.html`: education, research experience, and honors.
 - `project-apdpo.html`: RL Solver for FJSP project, figures, benchmark results, and related papers.
-- `styles.css`: shared layout, typography, and responsive styles.
+- `styles.css`: shared layout, typography, and responsive styles for all pages.
 - `assets/wenjun-zheng.jpg`: profile photograph.
 - `assets/APDPO_CDC2025.pdf`: downloadable paper.
 - `assets/*.webp`: optimized project figures used on the website (about 394 KB combined). Original PNG figures are retained and open when a project figure is clicked.

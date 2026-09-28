@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Wenjun Zheng — Ph.D. student in Data Science at CUHK-Shenzhen, researching reinforcement learning, scheduling, and data-driven optimization.">
-  <meta name="theme-color" content="#f6f6f4">
+  <meta name="theme-color" content="#f4f5f6">
   <title>Wenjun Zheng | CUHK-Shenzhen</title>
-  <link rel="stylesheet" href="styles.css?v=20260928">
+  <link rel="stylesheet" href="styles.css?v=20260928b">
 </head>
 <body class="homepage-page" id="top">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -16,8 +16,8 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" aria-current="page">Home</a>
         <a href="project-apdpo.html">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="experience.html">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -27,12 +27,12 @@
     <div class="site-layout">
       <aside class="profile-card" aria-label="Profile">
         <div class="profile-summary">
-          <img class="profile-photo" src="assets/wenjun-zheng.jpg" alt="Portrait of Wenjun Zheng" width="168" height="210" fetchpriority="high">
+          <img class="profile-photo" src="assets/wenjun-zheng.jpg" alt="Portrait of Wenjun Zheng" width="180" height="225" fetchpriority="high">
           <div class="profile-identity">
             <h1 class="profile-name">Wenjun Zheng</h1>
             <p class="name-cn" lang="zh-CN">郑文军</p>
             <p class="profile-role">Ph.D. Student in Data Science</p>
-            <p class="profile-affiliation">The Chinese University of<br class="desktop-break"> Hong Kong, Shenzhen</p>
+            <p class="profile-affiliation">The Chinese University of Hong Kong, Shenzhen</p>
           </div>
         </div>
         <div class="profile-contact">
@@ -44,186 +44,48 @@
           <a href="https://github.com/SimpleBoyGuy" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           <a href="assets/Wenjun_Zheng_CV.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae <span class="link-format">PDF</span></a>
         </nav>
-        <nav class="profile-contents" aria-label="On this page">
-          <p class="eyebrow">On this page</p>
-          <a href="#about">About</a>
-          <a href="#interests">Research interests</a>
-          <a href="#education">Education</a>
-          <a href="#honors">Honors &amp; awards</a>
-          <a href="#talks">Selected talks</a>
-        </nav>
       </aside>
 
       <main class="main-content" id="main-content" tabindex="-1">
+        <section class="home-intro" aria-labelledby="home-title">
+          <p class="eyebrow">Homepage</p>
+          <h1 id="home-title">I develop learning and optimization methods for practical scheduling and decision-making problems.</h1>
+        </section>
+
         <section class="content-section" id="about" aria-labelledby="about-title">
-          <h2 class="section-label" id="about-title">About</h2>
+          <h2 class="section-label" id="about-title">About Me</h2>
           <div class="card section-card">
-            <h3 class="card-title">Welcome to my homepage.</h3>
             <p>I am a Ph.D. student in Data Science at <strong>The Chinese University of Hong Kong, Shenzhen</strong>, advised by <a href="https://sds.cuhk.edu.cn/en/teacher/268" target="_blank" rel="noopener noreferrer">Prof. Jianfeng Mao</a>.</p>
-            <p>My recent work focuses on reinforcement learning for combinatorial optimization and scheduling, especially flexible job shop scheduling problems under <strong>safety</strong>, <strong>scalability</strong>, and <strong>structure-awareness</strong> considerations.</p>
-            <p>Before starting my doctoral study, I received my B.S. in Mathematics and Applied Mathematics from CUHK-Shenzhen with first-class honors. I have also worked on smart transportation, crowdsensing, and sensing-driven intelligent systems through research projects at the Shenzhen Research Institute of Big Data (SRIBD) and the Shenzhen Institute of Artificial Intelligence and Robotics for Society (AIRS).</p>
-            <p class="research-note">I am passionate about pursuing meaningful academic success and transforming that success into real-world impact. I hope to build research that is rigorous, original, and useful for practical decision-making and optimization problems.</p>
+            <p>My research focuses on reinforcement learning, data-driven optimization, and multi-agent systems for scheduling and other complex decision-making problems. I am particularly interested in flexible job shop scheduling under safety, scalability, and structure-awareness considerations.</p>
+            <p>Before my doctoral study, I received my B.S. in Mathematics and Applied Mathematics from CUHK-Shenzhen with first-class honors. I have also worked on smart transportation, crowdsensing, and sensing-driven intelligent systems at SRIBD and AIRS.</p>
           </div>
         </section>
 
-        <section class="content-section" id="interests" aria-labelledby="interests-title">
-          <h2 class="section-label" id="interests-title">Research Interests</h2>
+        <section class="content-section" id="highlights" aria-labelledby="highlights-title">
+          <h2 class="section-label" id="highlights-title">Recent Research Highlights</h2>
           <div class="card section-card">
-            <p>My research interests lie in reinforcement learning, data-driven and contextual optimization, and multi-agent systems, particularly for scheduling and other complex decision-making problems.</p>
-            <ul class="interest-list">
-              <li>Reinforcement Learning</li>
-              <li>Scheduling</li>
-              <li>Contextual &amp; Data-Driven Optimization</li>
-              <li>Multi-Agent Systems</li>
-            </ul>
-            <article class="featured-project">
-              <a class="project-thumbnail" href="project-apdpo.html" aria-label="Explore the RL Solver for FJSP research project">
-                <img src="assets/framework.webp" alt="State encoding, action-priority policy, and schedule evaluation in the RL solver" width="1800" height="1005" loading="lazy" decoding="async">
-              </a>
-              <div>
-                <p class="eyebrow">Featured Project</p>
-                <h3><a href="project-apdpo.html">RL Solver for FJSP</a></h3>
-                <p>Reinforcement learning for flexible job shop scheduling, with an emphasis on solution quality, decision transparency, and computational efficiency.</p>
-                <div class="text-links">
-                  <a href="project-apdpo.html">Explore project <span aria-hidden="true">→</span></a>
-                  <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noopener noreferrer">Paper <span class="link-format">PDF</span></a>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="content-section" id="publications" aria-labelledby="publications-title">
-          <div class="section-heading">
-            <h2 class="section-label" id="publications-title">Selected Publications</h2>
-            <a class="section-link" href="https://scholar.google.com/citations?user=0Aq3UvAAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="card section-card publication-list">
-            <article class="publication">
-              <h3 class="pub-title">Action-Priority Driven Policy Optimization via Gradient-Free Updates for Flexible Job Shop Problem</h3>
-              <p class="pub-authors"><strong>W. Zheng</strong>, W. Cai, Z. Wang, and J. Mao.</p>
-              <p class="pub-venue">Under review at <em>IEEE Transactions on Automatic Control</em>.</p>
-            </article>
-            <article class="publication">
-              <h3 class="pub-title">SPARK-RL: A Structure-Knowledge-Aware Reinforcement Learning Framework for the Flexible Job Shop Scheduling Problem</h3>
-              <p class="pub-authors"><strong>W. Zheng</strong>, W. Cai, C. Li, and J. Mao.</p>
-              <p class="pub-venue">Under review at <em>Operations Research</em>.</p>
-            </article>
-            <article class="publication">
-              <h3 class="pub-title">WARP-RL: Instance-Space Warping Reinforcement Learning for Flexible Job Shop Scheduling</h3>
-              <p class="pub-authors"><strong>W. Zheng</strong>, W. Cai, and J. Mao.</p>
-              <p class="pub-venue">Under review at <em>IEEE Transactions on Industrial Informatics</em>.</p>
-            </article>
-            <article class="publication">
-              <h3 class="pub-title">Extended Invalid Action Mask: Training-Time Size-Agnostic Safe Reinforcement Learning for Flexible Job Shop Scheduling Problems</h3>
-              <p class="pub-authors">W. Cai, <strong>W. Zheng</strong>, Z. Wang, Y. Chen, and J. Mao.</p>
-              <p class="pub-venue"><em>CASE</em>, 2025.</p>
-            </article>
-            <article class="publication">
-              <h3 class="pub-title"><a href="project-apdpo.html">Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</a></h3>
-              <p class="pub-authors"><strong>W. Zheng</strong>, W. Cai, W. Qu, and J. Mao.</p>
-              <p class="pub-venue">Accepted at the <em>2025 IEEE Conference on Decision and Control</em>.</p>
-              <div class="text-links pub-links">
-                <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noopener noreferrer">Paper <span class="link-format">PDF</span></a>
-                <a href="project-apdpo.html">Project <span aria-hidden="true">→</span></a>
-              </div>
-            </article>
-            <article class="publication">
-              <h3 class="pub-title">Hypergraph-Assisted Communicative Multi-Agent Reinforcement Learning for Coordinated Air Traffic Flow Management in Multi-Airport Systems</h3>
-              <p class="pub-authors">W. Qu, <strong>W. Zheng</strong>, L. Wang, and J. Mao.</p>
-              <p class="pub-venue">Under review at <em>IEEE Transactions on Automation Science and Engineering</em>.</p>
-            </article>
-            <article class="publication">
-              <h3 class="pub-title">Crowdsense Roadside Parking Spaces With Dynamic Gap Reduction Algorithm</h3>
-              <p class="pub-authors"><strong>W. Zheng</strong>, Z. Shi, Q. Ou, and R. Liao.</p>
-              <p class="pub-venue"><em>IEEE Internet of Things Journal</em>, 2024.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="content-section" id="education" aria-labelledby="education-title">
-          <h2 class="section-label" id="education-title">Education</h2>
-          <div class="card section-card entry-list">
-            <article class="entry">
-              <div class="entry-heading"><h3>Ph.D. in Data Science</h3><p class="entry-date">Sep 2022 – Present</p></div>
-              <p class="entry-affiliation">The Chinese University of Hong Kong, Shenzhen</p>
-              <p>Completed seven doctoral courses with six A grades and one A-.</p>
-            </article>
-            <article class="entry">
-              <div class="entry-heading"><h3>B.S. in Mathematics and Applied Mathematics</h3><p class="entry-date">Aug 2018 – Jun 2022</p></div>
-              <p class="entry-affiliation">The Chinese University of Hong Kong, Shenzhen</p>
-              <p>First-class honors, major GPA 3.909/4.000.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="content-section" id="experience" aria-labelledby="experience-title">
-          <h2 class="section-label" id="experience-title">Experience</h2>
-          <div class="card section-card entry-list">
-            <article class="entry">
-              <h3>Algorithm Development for EMU Maintenance Scheduling at Chengdu Railway Bureau</h3>
-              <p class="entry-affiliation">Research Project <span class="meta-separator">·</span> Apr 2023 – Oct 2023</p>
-              <p>Developed a modular discrete-event dynamic system framework for large-scale EMU maintenance scheduling, modeling hierarchical operations, workstation allocation, operation intervals, and track first-in-last-out constraints to support robust scheduling under evolving project requirements.</p>
-            </article>
-            <article class="entry">
-              <h3>Research Project on Intelligent Decision-Making and Scheduling Optimization for Subcontracting Operations</h3>
-              <p class="entry-affiliation">Industry Collaboration Project <span class="meta-separator">·</span> Sep 2022 – Sep 2024</p>
-              <p>Worked on data-driven evaluation, business evolution analysis, and intelligent scheduling optimization for Huawei subcontracting operations, with emphasis on anomaly diagnosis, service evaluation and deduction, and distributed and centralized delivery scheduling.</p>
-            </article>
-            <article class="entry">
-              <h3>Research Assistant as a Ph.D. Student</h3>
-              <p class="entry-affiliation">Shenzhen Research Institute of Big Data <span class="meta-separator">·</span> Jun 2023 – Present</p>
-              <p>Built a simulation platform for multi-mode resource-constrained project scheduling problems.</p>
-            </article>
-            <article class="entry">
-              <h3>Research Assistant</h3>
-              <p class="entry-affiliation">Shenzhen Institute of Artificial Intelligence and Robotics for Society <span class="meta-separator">·</span> Jun 2021 – Mar 2022</p>
-              <p>Worked on graph neural networks, MCMC-based modeling, and robotics-related investigation tasks.</p>
-            </article>
-            <article class="entry">
-              <h3>Research Assistant as an Undergraduate</h3>
-              <p class="entry-affiliation">Shenzhen Research Institute of Big Data <span class="meta-separator">·</span> Jun 2019 – Jun 2021</p>
-              <p>Studied roadside parking detection, crowdsensing, and multi-sensor smart city applications.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="content-section" id="honors" aria-labelledby="honors-title">
-          <h2 class="section-label" id="honors-title">Honors &amp; Awards</h2>
-          <div class="card section-card">
-            <ul class="dated-list">
-              <li><span>First Prize, Greater Bay Area Graduate Research Forum</span><span class="list-date">2025</span></li>
-              <li><span>Silver Class, SRIBD Ph.D. Fellowship</span><span class="list-date">2023</span></li>
-              <li><span>Dean's List, CUHK-Shenzhen</span><span class="list-date">2018–2021</span></li>
-              <li><span>Undergraduate Research Award</span><span class="list-date">2019 &amp; 2020</span></li>
-              <li><span>H.L. TU Scholarship, Top 2%</span><span class="list-date">2018</span></li>
+            <ul class="highlight-list">
+              <li><strong>Action-priority policy optimization:</strong> reinforcement learning methods for flexible job shop scheduling with transparent action selection. <a href="project-apdpo.html">Project overview →</a></li>
+              <li><strong>Structure-aware scheduling:</strong> using problem structure and instance information to improve generalization across scheduling problems.</li>
+              <li><strong>Safe and scalable decision-making:</strong> learning policies that respect feasibility constraints while remaining effective across problem sizes.</li>
             </ul>
           </div>
         </section>
 
-        <section class="content-section" id="talks" aria-labelledby="talks-title">
-          <h2 class="section-label" id="talks-title">Selected Talks</h2>
-          <div class="card section-card entry-list">
-            <article class="entry">
-              <h3>Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</h3>
-              <p class="entry-affiliation">IEEE CDC 2025 <span class="meta-separator">·</span> Rio de Janeiro</p>
-            </article>
-            <article class="entry">
-              <h3>R-N Algorithm for Crowdsensing On-street Parking Spaces</h3>
-              <p class="entry-affiliation">IWCMC 2021 <span class="meta-separator">·</span> Harbin</p>
-            </article>
-            <article class="entry">
-              <h3>An Analytical Model for Crowdsensing On-street Parking Spaces</h3>
-              <p class="entry-affiliation">IINTEC 2019 <span class="meta-separator">·</span> Tunisia</p>
-            </article>
+        <section class="content-section" id="see-also" aria-labelledby="see-also-title">
+          <h2 class="section-label" id="see-also-title">See Also</h2>
+          <div class="card section-card see-also-grid">
+            <a class="see-also-item" href="project-apdpo.html"><strong>Research Project</strong><span>RL Solver for FJSP →</span></a>
+            <a class="see-also-item" href="publications.html"><strong>Publications</strong><span>Selected papers and talks →</span></a>
+            <a class="see-also-item" href="experience.html"><strong>Experience</strong><span>Education, awards, and work →</span></a>
+            <a class="see-also-item" href="assets/Wenjun_Zheng_CV.pdf" target="_blank" rel="noopener noreferrer"><strong>Curriculum Vitae</strong><span>Download PDF →</span></a>
           </div>
         </section>
 
         <section class="content-section" id="contact" aria-labelledby="contact-title">
           <h2 class="section-label" id="contact-title">Contact</h2>
           <div class="card section-card contact-card">
-            <div><h3>The Chinese University of Hong Kong, Shenzhen</h3><p>For research inquiries, please reach me by email.</p></div>
-            <a class="email-link" href="mailto:wenjunzheng@link.cuhk.edu.cn">wenjunzheng@link.cuhk.edu.cn <span aria-hidden="true">↗</span></a>
+            <p>For research inquiries, please reach me at <a class="email-link" href="mailto:wenjunzheng@link.cuhk.edu.cn">wenjunzheng@link.cuhk.edu.cn</a>.</p>
           </div>
         </section>
       </main>
