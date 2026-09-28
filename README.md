@@ -1,22 +1,38 @@
-# Wenjun Zheng Homepage Draft
+# Wenjun Zheng — Academic Homepage
 
-This folder contains a simple static academic homepage that can be deployed directly with GitHub Pages.
+Static academic website for Wenjun Zheng, hosted at [simpleboyguy.github.io](https://simpleboyguy.github.io/).
+
+Repository: [SimpleBoyGuy/SimpleBoyGuy.github.io](https://github.com/SimpleBoyGuy/SimpleBoyGuy.github.io).
 
 ## Files
 
-- `index.html`: main homepage
-- `styles.css`: page styles
-- `assets/Wenjun_Zheng_CV.pdf`: downloadable CV
+- `index.html`: biography, research, publications, experience, and contact information.
+- `project-apdpo.html`: RL Solver for FJSP project, figures, benchmark results, and related papers.
+- `styles.css`: shared layout, typography, and responsive styles.
+- `assets/wenjun-zheng.jpg`: profile photograph.
+- `assets/APDPO_CDC2025.pdf`: downloadable paper.
+- `assets/*.webp`: optimized project figures used on the website (about 394 KB combined). Original PNG figures are retained and open when a project figure is clicked.
+- `assets/Wenjun_Zheng_CV.pdf`: CV linked from the homepage.
+- `scripts/generate_project_benchmark_figure.py`: source script for the benchmark comparison figure.
 
-## Publish To GitHub Pages
+## Local preview
 
-1. Create a new public repository named `YOUR_GITHUB_USERNAME.github.io`.
-2. Upload all files in this folder to the root of that repository.
-3. Wait a few minutes. GitHub Pages will automatically publish the site.
-4. Open `https://YOUR_GITHUB_USERNAME.github.io`.
+Open a terminal in this repository and run:
 
-## Things To Confirm
+```sh
+python -m http.server 8765 --bind 127.0.0.1
+```
 
-- Replace `YOUR_GITHUB_USERNAME` with your exact GitHub username.
-- Update the homepage text if you want a different self-introduction or research-interest phrasing.
-- Add a profile photo later if desired.
+Then open [http://127.0.0.1:8765](http://127.0.0.1:8765). On Windows, `py -m http.server 8765 --bind 127.0.0.1` also works when the Python launcher is installed. Stop the server with `Ctrl+C`.
+
+Local editing and previewing require no GitHub password, access token, or repository authorization. The website has no build step and uses system fonts.
+
+## GitHub Pages
+
+The repository already exists and its local branch is `main`. To publish reviewed changes, use an authenticated Git client to commit and push them to this repository. Editing or previewing the files locally does not publish them.
+
+In the repository's **Settings → Pages**, choose **Deploy from a branch**, then select **main** and **/ (root)**. Save the configuration and allow the Pages deployment to complete before checking [https://simpleboyguy.github.io/](https://simpleboyguy.github.io/).
+
+## Content updates
+
+Edit the relevant HTML file directly. Keep paper titles, publication status, author lists, numerical results, and contact details aligned with the author's confirmed information. When editing shared styles, update the stylesheet query string in both HTML pages if cache invalidation is needed.

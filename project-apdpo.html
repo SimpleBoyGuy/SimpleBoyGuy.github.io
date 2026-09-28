@@ -8,41 +8,42 @@
     name="description"
     content="Research project page for a reinforcement learning solver for the Flexible Job Shop Scheduling Problem by Wenjun Zheng."
   >
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Spectral:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  >
-  <link rel="stylesheet" href="styles.css?v=20260409f">
+  <link rel="stylesheet" href="styles.css?v=20260928">
 </head>
 <body class="project-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-name" href="index.html">Wenjun Zheng</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="project-apdpo.html" aria-current="page">Research</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
   <div class="page-shell">
-    <div class="project-layout">
-      <aside class="project-sidebar">
-        <div class="sidebar-block">
-          <p class="eyebrow">Quick Links</p>
-          <nav class="sidebar-links">
-            <a href="index.html">Homepage</a>
-            <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
-          </nav>
-        </div>
-
-        <div class="sidebar-block">
-          <p class="eyebrow">On This Page</p>
-          <nav class="sidebar-links sidebar-links-secondary">
-            <a href="#problem">Problem</a>
-            <a href="#framework">Framework</a>
-            <a href="#results">Results</a>
-            <a href="#papers">Papers</a>
-          </nav>
-        </div>
+    <div class="site-layout">
+      <aside class="profile-card project-sidebar">
+        <p class="eyebrow">Research Project</p>
+        <h2 class="sidebar-title">RL Solver for FJSP</h2>
+        <p class="profile-role">Reinforcement learning for flexible job shop scheduling</p>
+        <nav class="sidebar-links" aria-label="Project sections and resources">
+          <a href="#problem">Problem</a>
+          <a href="#framework">Framework</a>
+          <a href="#results">Results</a>
+          <a href="#papers">Papers</a>
+          <a href="assets/APDPO_CDC2025.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
+          <a href="index.html">Homepage</a>
+        </nav>
       </aside>
 
-      <div class="project-main">
-        <header class="subpage-hero">
+      <main id="main-content" class="main-content" tabindex="-1">
+        <section class="card project-intro" aria-labelledby="project-title">
           <p class="eyebrow">Research Project</p>
-          <h1>RL Solver for FJSP</h1>
+          <h1 id="project-title" class="project-title">RL Solver for FJSP</h1>
           <p class="subtitle">
             Reinforcement Learning for the Flexible Job Shop Scheduling Problem
           </p>
@@ -51,61 +52,83 @@
             <strong>solution quality</strong>, <strong>decision transparency</strong>, and
             <strong>computational efficiency</strong>.
           </p>
-        </header>
+        </section>
 
-        <main class="content-flow">
-          <section class="content-section" id="problem">
-            <h2>Problem Formulation</h2>
+        <section class="content-section" id="problem">
+          <h2 class="section-label">Problem Formulation</h2>
+          <div class="card section-card">
             <p>
               In FJSP, each job contains an ordered sequence of operations, and each operation may be processed by
               multiple eligible machines. The solver must jointly decide operation sequencing and machine assignment,
               with the objective of minimizing the makespan.
             </p>
             <figure class="paper-figure">
+              <a href="assets/FJSP.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size FJSP problem illustration">
               <img
-                src="assets/FJSP.png"
+                src="assets/FJSP.webp"
                 alt="Flexible job shop scheduling problem illustration"
                 class="figure-image figure-image-problem"
+                width="1800"
+                height="982"
+                loading="lazy"
+                decoding="async"
               >
+              </a>
               <figcaption class="figure-caption">
                 <strong>Figure 1.</strong> Problem formulation of FJSP, showing job precedence constraints,
                 alternative machine eligibility, feasibility constraints, and the makespan minimization objective.
               </figcaption>
             </figure>
-          </section>
+          </div>
+        </section>
 
-          <section class="content-section" id="framework">
-            <h2>RL Solver Framework</h2>
+        <section class="content-section" id="framework">
+          <h2 class="section-label">RL Solver Framework</h2>
+          <div class="card section-card">
             <p>
               The current solver uses a problem-specific RL formulation together with an action-priority policy
               design. In the current paper, APDPO serves as one policy optimization module within this broader solver.
             </p>
             <figure class="paper-figure">
+              <a href="assets/framework.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size RL solver framework">
               <img
-                src="assets/framework.png"
+                src="assets/framework.webp"
                 alt="RL solver framework for flexible job shop scheduling"
                 class="figure-image figure-image-framework"
+                width="1800"
+                height="1005"
+                loading="lazy"
+                decoding="async"
               >
+              </a>
               <figcaption class="figure-caption">
                 <strong>Figure 2.</strong> Overall framework of the RL solver for FJSP. The solver encodes the
                 scheduling state, evaluates feasible actions through an action-priority policy, and improves the policy
                 from rollout-based schedule evaluation; APDPO is used here as a direct priority update mechanism.
               </figcaption>
             </figure>
-          </section>
+          </div>
+        </section>
 
-          <section class="content-section" id="results">
-            <h2>Experimental Snapshot</h2>
+        <section class="content-section" id="results">
+          <h2 class="section-label">Experimental Snapshot</h2>
+          <div class="card section-card">
             <p>
               On representative benchmark groups from the Brandimarte and Hurink families, the reported results show
               that the solver outperforms existing RL baselines and moves closer to OR-Tools.
             </p>
             <figure class="paper-figure">
+              <a href="assets/benchmark-comparison.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size benchmark comparison">
               <img
-                src="assets/benchmark-comparison.png"
+                src="assets/benchmark-comparison.webp"
                 alt="Benchmark comparison plot generated from the CDC 2025 results"
                 class="figure-image figure-image-results"
+                width="1800"
+                height="705"
+                loading="lazy"
+                decoding="async"
               >
+              </a>
               <figcaption class="figure-caption">
                 <strong>Figure 3.</strong> Experimental comparison on representative benchmark families. The RL solver
                 consistently improves upon the best RL baseline and reduces the performance gap to OR-Tools in terms of
@@ -116,14 +139,15 @@
             <p class="table-caption">
               <strong>Table 1.</strong> Average makespan comparison summarized from Table I of the CDC 2025 paper.
             </p>
-            <div class="table-wrap">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Benchmark comparison table; scroll horizontally on small screens">
               <table class="benchmark-table">
+                <caption class="sr-only">Average makespan comparison for representative FJSP benchmark families</caption>
                 <thead>
                   <tr>
-                    <th>Benchmark</th>
-                    <th>Best RL Baseline</th>
-                    <th>RL Solver</th>
-                    <th>OR-Tools</th>
+                    <th scope="col">Benchmark</th>
+                    <th scope="col">Best RL Baseline</th>
+                    <th scope="col">RL Solver</th>
+                    <th scope="col">OR-Tools</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -154,24 +178,25 @@
                 </tbody>
               </table>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section class="content-section" id="papers">
-            <h2>Related Papers</h2>
+        <section class="content-section" id="papers">
+          <h2 class="section-label">Related Papers</h2>
+          <div class="card section-card">
             <ul class="plain-list">
               <li>Action-Priority Driven Policy Optimization for Flexible Job Shop Scheduling Problem</li>
               <li>Action-Priority Driven Policy Optimization via Gradient-Free Updates for Flexible Job Shop Problem (under review)</li>
               <li>WARP-RL: Instance-Space Warping Reinforcement Learning for Flexible Job Shop Scheduling (under review)</li>
             </ul>
-          </section>
-        </main>
-
-        <footer class="footer">
-          <p>Last updated: April 2026</p>
-          <p><a href="index.html">Return to homepage</a></p>
-        </footer>
-      </div>
+          </div>
+        </section>
+      </main>
     </div>
+    <footer class="site-footer">
+      <p>Last updated: September 2026</p>
+      <p><a href="index.html">Return to homepage</a></p>
+    </footer>
   </div>
 </body>
 </html>
