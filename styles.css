@@ -2,11 +2,11 @@
   color-scheme: light;
   --background: #f3f4f5;
   --paper: #ffffff;
-  --text: #2f3338;
-  --heading: #20334f;
-  --muted: #68717b;
-  --accent: #7d6858;
-  --link: #285c78;
+  --text: #111111;
+  --heading: #111111;
+  --muted: var(--text);
+  --accent: #164b74;
+  --link: #164b74;
   --line: #dfe2e5;
   --soft-line: #ebedef;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Microsoft YaHei", sans-serif;
@@ -67,6 +67,8 @@ section[id], main[id] { scroll-margin-top: 24px; }
 .section-card { padding: 29px 32px; }
 .home-intro { padding: 7px 0 32px; border-bottom: 1px solid var(--line); }
 .home-intro h1 { max-width: 780px; color: var(--heading); font: 600 clamp(2rem, 4vw, 2.8rem)/1.25 var(--sans); letter-spacing: -.7px; }
+.homepage-intro { padding: 7px 0 24px; }
+.homepage-summary { max-width: 38em; margin: 10px 0 0; font: 400 20px/1.7 var(--serif); color: var(--text); }
 .home-intro + .content-section { margin-top: 30px; }
 .highlight-list { margin: 0; padding-left: 22px; }
 .highlight-list li + li { margin-top: 16px; }
@@ -104,7 +106,7 @@ section[id], main[id] { scroll-margin-top: 24px; }
 .entry-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 5px 18px; }
 .entry-heading h3 { flex: 1 1 270px; }
 .entry-heading .entry-date { color: var(--muted); font: 400 12px/1.8 var(--sans); margin: 0; white-space: nowrap; }
-.meta-separator { padding: 0 5px; color: #999; }
+.meta-separator { padding: 0 5px; color: inherit; }
 .dated-list { list-style: none; margin: 0; padding: 0; font-size: 14px; }
 .dated-list li { display: flex; justify-content: space-between; gap: 10px 28px; align-items: baseline; }
 .dated-list li + li { border-top: 1px solid var(--soft-line); margin-top: 11px; padding-top: 11px; }
@@ -191,6 +193,7 @@ section[id], main[id] { scroll-margin-top: 24px; }
   .profile-contents { gap: 7px 17px; }
   .section-card, .project-intro { padding: 21px 20px; }
   .section-label { font-size: 12px; }
+  .homepage-summary { font-size: 18px; }
   .section-heading { row-gap: 6px; }
   .card-title { font-size: 20px; }
   .content-section + .content-section { margin-top: 25px; }
